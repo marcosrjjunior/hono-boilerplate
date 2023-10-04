@@ -1,11 +1,11 @@
 {
   "scripts": {
     "dev": "bun run --hot src/index.ts",
-    "dev:node": "tsnd --respawn src/node.ts",
-    "db:migrate:up": "ts-node-dev -r dotenv/config ./src/lib/db/migrate up && npm run db:generate:types",
-    "db:migrate:down": "ts-node-dev -r dotenv/config ./src/lib/db/migrate down && npm run db:generate:types",
-    "db:migrate:redo": "ts-node-dev -r dotenv/config ./src/lib/db/migrate redo && npm run db:generate:types",
-    "db:seed": "ts-node-dev -r dotenv/config ./src/lib/db/seed",
+    "dev:node": "tsnd -r dotenv/config --respawn src/node.ts",
+    "db:migrate:up": "tsnd -r dotenv/config ./src/lib/db/migrate up && npm run db:generate:types",
+    "db:migrate:down": "tsnd -r dotenv/config ./src/lib/db/migrate down && npm run db:generate:types",
+    "db:migrate:redo": "tsnd -r dotenv/config ./src/lib/db/migrate redo && npm run db:generate:types",
+    "db:seed": "tsnd -r dotenv/config ./src/lib/db/seed",
     "db:generate:types": "npx kanel && npm run db:types:prettier",
     "db:types:prettier": "prettier --write ./src/lib/db/schema && eslint ./src/lib/db/schema --ext .ts,.tsx --fix",
     "prettier": "prettier --write ."
