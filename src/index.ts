@@ -11,4 +11,9 @@ app.onError((err, c) => {
   return c.text('Custom Error Message', 500)
 })
 
+// app.notFound(c => {
+//   console.error(`not found${c}`)
+//   return c.text('404 Not found', 404)
+// })
+
 export default app

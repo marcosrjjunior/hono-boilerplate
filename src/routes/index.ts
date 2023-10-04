@@ -6,7 +6,7 @@ import users from './users'
 export const routes = (app: Hono) => {
   app.use('*', logger())
 
-  app.route('/users', users)
+  app.get('/', hello(), c => c.json({ 1: 'Hello', 2: 'World' }))
 
-  app.get('/test', hello(), c => c.json({ 1: 'assadasdda' }))
+  app.route('/users', users)
 }
