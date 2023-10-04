@@ -4,15 +4,6 @@ import { softDelete, withTimestamps } from '../utils'
 
 export async function up(db: Kysely<any>): Promise<void> {
   await db.schema
-    .createTable('organisations')
-    .addColumn('id', 'uuid', col =>
-      col.primaryKey().defaultTo(sql`gen_random_uuid()`)
-    )
-    .addColumn('name', 'text', col => col.unique().notNull())
-    .addColumn('referencePrefix', 'text')
-    .execute()
-
-  await db.schema
     .createType('userRole')
     .asEnum(['SUPPORT', 'SALES', 'CS'])
     .execute()
@@ -22,10 +13,6 @@ export async function up(db: Kysely<any>): Promise<void> {
     .addColumn('id', 'uuid', col =>
       col.primaryKey().defaultTo(sql`gen_random_uuid()`)
     )
-    .addColumn('organisationId', 'uuid', col =>
-      col.references('organisations.id').onDelete('no action').notNull()
-    )
-    .addColumn('referencePrefix', 'text')
     .addColumn('name', 'text')
     .addColumn('email', 'text', col => col.unique().notNull())
     .addColumn('emailVerified', 'timestamptz')
@@ -94,5 +81,4 @@ export async function down(db: Kysely<any>): Promise<void> {
   await db.schema.dropTable('users').ifExists().execute()
   await db.schema.dropType('userRole').ifExists().execute()
   await db.schema.dropTable('verificationTokens').ifExists().execute()
-  await db.schema.dropTable('organisations').ifExists().execute()
 }

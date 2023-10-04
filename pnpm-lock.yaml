@@ -15,8 +15,8 @@ dependencies:
     specifier: ^0.26.3
     version: 0.26.3
   kysely-migration-cli:
-    specifier: ^0.2.2
-    version: 0.2.2
+    specifier: ^0.2.3
+    version: 0.2.3
   pg:
     specifier: ^8.11.3
     version: 8.11.3
@@ -34,18 +34,21 @@ devDependencies:
   kanel-kysely:
     specifier: ^0.2.0
     version: 0.2.0
+  prettier:
+    specifier: ^3.0.3
+    version: 3.0.3
   ts-node-dev:
     specifier: ^2.0.0
     version: 2.0.0(@types/node@20.8.2)(typescript@5.2.2)
 
 packages:
 
-  /@commander-js/extra-typings@11.0.0(commander@9.5.0):
+  /@commander-js/extra-typings@11.0.0(commander@11.0.0):
     resolution: {integrity: sha512-06ol6Kn5gPjFY6v0vWOZ84nQwyqhZdaeZCHYH3vhwewjpOEjniF1KHZxh18887G3poWiJ8qyq5pb6ANuiddfPQ==}
     peerDependencies:
       commander: 11.0.x
     dependencies:
-      commander: 9.5.0
+      commander: 11.0.0
     dev: false
 
   /@cspotcode/source-map-support@0.8.1:
@@ -192,9 +195,9 @@ packages:
       fsevents: 2.3.3
     dev: true
 
-  /commander@9.5.0:
-    resolution: {integrity: sha512-KRs7WVDKg86PWiuAqhDrAQnTXZKraVcCc6vFdL14qrZ/DcWwuRo7VoiYXalXO7S5GKpqYiVEwCbgFDfxNHKJBQ==}
-    engines: {node: ^12.20.0 || >=14}
+  /commander@11.0.0:
+    resolution: {integrity: sha512-9HMlXtt/BNoYr8ooyjjNRdIilOTkVJXB+GhxMTtOKwk0R4j4lS4NpjuqmRxroBfnfTSHQIHQB7wryHhXarNjmQ==}
+    engines: {node: '>=16'}
     dev: false
 
   /concat-map@0.0.1:
@@ -321,12 +324,12 @@ packages:
       '@kristiandupont/recase': 1.2.0
     dev: true
 
-  /kysely-migration-cli@0.2.2:
-    resolution: {integrity: sha512-a9Fyyf0NH8A89D2qd84KI9fbmokAzuJgJYldAoDvMMp5qqPIxXcprvKF8T8oFVPjnGTslKy9TQkES5+1yDV+Sg==}
+  /kysely-migration-cli@0.2.3:
+    resolution: {integrity: sha512-D3OGqBsNEgevPSPPnroBYK9TLBfnOf8eCxB7HiZq4Fh86u6oxjz0E7KJxeB/5k+ibF0KInnRaCFllSrIxDRRog==}
     hasBin: true
     dependencies:
-      '@commander-js/extra-typings': 11.0.0(commander@9.5.0)
-      commander: 9.5.0
+      '@commander-js/extra-typings': 11.0.0(commander@11.0.0)
+      commander: 11.0.0
     dev: false
 
   /kysely@0.26.3:
@@ -513,6 +516,12 @@ packages:
 
   /postgres-range@1.1.3:
     resolution: {integrity: sha512-VdlZoocy5lCP0c/t66xAfclglEapXPCIVhqqJRncYpvbCgImF0w67aPKfbqUMr72tO2k5q0TdTZwCLjPTI6C9g==}
+    dev: true
+
+  /prettier@3.0.3:
+    resolution: {integrity: sha512-L/4pUDMxcNa8R/EthV08Zt42WBO4h1rarVtK0K+QJG0X187OLo7l699jWw0GKuwzkPQ//jMFA/8Xm6Fh3J/DAg==}
+    engines: {node: '>=14'}
+    hasBin: true
     dev: true
 
   /ramda@0.28.0:

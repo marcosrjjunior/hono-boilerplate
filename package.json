@@ -2,6 +2,10 @@
   "scripts": {
     "dev": "bun run --hot src/index.ts",
     "dev:node": "tsnd --respawn src/node.ts",
+    "db:migrate:up": "ts-node-dev -r dotenv/config ./src/lib/db/migrate up && npm run db:generate:types",
+    "db:migrate:down": "ts-node-dev -r dotenv/config ./src/lib/db/migrate down && npm run db:generate:types",
+    "db:migrate:redo": "ts-node-dev -r dotenv/config ./src/lib/db/migrate redo && npm run db:generate:types",
+    "db:seed": "ts-node-dev -r dotenv/config ./src/lib/db/seed",
     "db:generate:types": "npx kanel && npm run db:types:prettier",
     "db:types:prettier": "prettier --write ./src/lib/db/schema && eslint ./src/lib/db/schema --ext .ts,.tsx --fix"
   },
@@ -9,7 +13,7 @@
     "@hono/node-server": "^1.2.0",
     "hono": "^3.7.2",
     "kysely": "^0.26.3",
-    "kysely-migration-cli": "^0.2.2",
+    "kysely-migration-cli": "^0.2.3",
     "pg": "^8.11.3"
   },
   "devDependencies": {
@@ -17,6 +21,7 @@
     "bun-types": "^0.6.2",
     "dotenv": "^16.3.1",
     "kanel-kysely": "^0.2.0",
+    "prettier": "^3.0.3",
     "ts-node-dev": "^2.0.0"
   }
 }
