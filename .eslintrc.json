@@ -1,0 +1,58 @@
+{
+  "root": true,
+  // See eslint.dirs property in next.config.js for the directories that are linted
+  "parser": "@typescript-eslint/parser",
+  "extends": [
+    "plugin:@typescript-eslint/eslint-recommended",
+    "plugin:@typescript-eslint/recommended",
+    "plugin:prettier/recommended"
+  ],
+  "plugins": [
+    "@typescript-eslint",
+    "unused-imports",
+    "eslint-plugin-import-helpers"
+  ],
+  "rules": {
+    "@typescript-eslint/no-explicit-any": "off",
+    "@typescript-eslint/no-empty-function": "off",
+    "@typescript-eslint/no-namespace": "off",
+    "@typescript-eslint/no-inferrable-types": "off",
+    "@typescript-eslint/no-unused-vars": "off",
+    "react/no-unescaped-entities": "off",
+    "react/no-unknown-property": "off",
+    "react/display-name": "off",
+
+    "unused-imports/no-unused-imports": "warn",
+    "unused-imports/no-unused-vars": [
+      "warn",
+      {
+        "vars": "all",
+        "varsIgnorePattern": "^_",
+        "args": "after-used",
+        "argsIgnorePattern": "^_"
+      }
+    ],
+
+    "import-helpers/order-imports": [
+      "warn",
+      {
+        // example configuration
+        "newlinesBetween": "always",
+        "groups": [
+          ["/^react/", "/^next/", "/^hono/"],
+          "module",
+          ["/^app/", "/^lib/", "/^routes/", "/^services/", "/^utils/"],
+          ["parent", "sibling", "index"],
+          "/.scss$|.css$/"
+        ],
+        "alphabetize": { "order": "asc", "ignoreCase": true }
+      }
+    ]
+  },
+  "settings": {
+    "react": {
+      "version": "detect"
+    }
+  },
+  "ignorePatterns": ["**/build/*.js", "*.queries.ts"]
+}

@@ -11,7 +11,7 @@ export async function up(db: Kysely<any>): Promise<void> {
   await db.schema
     .createTable('users')
     .addColumn('id', 'uuid', col =>
-      col.primaryKey().defaultTo(sql`gen_random_uuid()`)
+      col.primaryKey().defaultTo(sql`gen_random_uuid()`),
     )
     .addColumn('name', 'text')
     .addColumn('email', 'text', col => col.unique().notNull())
@@ -26,10 +26,10 @@ export async function up(db: Kysely<any>): Promise<void> {
   await db.schema
     .createTable('accounts')
     .addColumn('id', 'uuid', col =>
-      col.primaryKey().defaultTo(sql`gen_random_uuid()`)
+      col.primaryKey().defaultTo(sql`gen_random_uuid()`),
     )
     .addColumn('userId', 'uuid', col =>
-      col.references('users.id').onDelete('cascade').notNull()
+      col.references('users.id').onDelete('cascade').notNull(),
     )
     .addColumn('type', 'text', col => col.notNull())
     .addColumn('provider', 'text', col => col.notNull())
@@ -46,10 +46,10 @@ export async function up(db: Kysely<any>): Promise<void> {
   await db.schema
     .createTable('sessions')
     .addColumn('id', 'uuid', col =>
-      col.primaryKey().defaultTo(sql`gen_random_uuid()`)
+      col.primaryKey().defaultTo(sql`gen_random_uuid()`),
     )
     .addColumn('userId', 'uuid', col =>
-      col.references('users.id').onDelete('cascade').notNull()
+      col.references('users.id').onDelete('cascade').notNull(),
     )
     .addColumn('sessionToken', 'text', col => col.notNull().unique())
     .addColumn('expires', 'timestamptz', col => col.notNull())

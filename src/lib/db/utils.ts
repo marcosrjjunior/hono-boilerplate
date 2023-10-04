@@ -3,10 +3,10 @@ import { sql } from 'kysely'
 export const withTimestamps = (qb: any) => {
   return qb
     .addColumn('createdAt', 'timestamptz', (col: any) =>
-      col.defaultTo(sql`CURRENT_TIMESTAMP`).notNull()
+      col.defaultTo(sql`CURRENT_TIMESTAMP`).notNull(),
     )
     .addColumn('updatedAt', 'timestamptz', (col: any) =>
-      col.defaultTo(sql`CURRENT_TIMESTAMP`).notNull()
+      col.defaultTo(sql`CURRENT_TIMESTAMP`).notNull(),
     )
 }
 
