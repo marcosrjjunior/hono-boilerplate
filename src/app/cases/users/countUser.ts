@@ -1,3 +1,6 @@
+import { z } from 'zod'
+
+import UserRole from '../../../lib/db/schema/public/UserRole'
 import {
   CountUserParams,
   UserRepositoryInterface,
@@ -15,17 +18,15 @@ export class CountUsers {
   }
 
   private validateFields = (params: CountUserParams) => {
-    // return assert(
-    //   params,
-    //   object({
-    //     page: optional(number()),
-    //     limit: optional(number()),
-    //     where: object({
-    //       venueId: string(),
-    //       role: string(),
-    //     }),
-    //   }),
-    // )
+    const CountParams = z.object({
+      where: z
+        .object({
+          role: z.nativeEnum(UserRole).optional(),
+        })
+        .optional(),
+    })
+
+    CountParams.parse(params)
   }
 }
 
