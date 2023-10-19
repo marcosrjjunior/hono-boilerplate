@@ -7,15 +7,15 @@ import {
 } from './interfaces/IUserRepository'
 
 class UserRepository implements IUserRepository {
-  count = async ({ where }: CountUserParams): Promise<CountUsersResponse> => {
-    const { ...condition } = where
-
+  count = async ({
+    where: { role },
+  }: CountUserParams): Promise<CountUsersResponse> => {
     let query = db
       .selectFrom('users')
       .select(eb => eb.fn.count<string>('id').as('count'))
 
-    if (condition.role) {
-      query = query.where('role', '=', UserRole[condition.role])
+    if (role) {
+      query = query.where('role', '=', UserRole[role])
     }
 
     const response = await query.executeTakeFirstOrThrow()
