@@ -64,6 +64,9 @@ devDependencies:
   ts-node-dev:
     specifier: ^2.0.0
     version: 2.0.0(@types/node@20.8.2)(typescript@5.2.2)
+  typescript:
+    specifier: ^5.2.2
+    version: 5.2.2
 
 packages:
 
