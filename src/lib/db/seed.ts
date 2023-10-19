@@ -4,7 +4,7 @@ import UserRole from './schema/public/UserRole'
 async function main() {
   await db
     .insertInto('users')
-    .values([{ name: 'Test', email: 'test@test.com', role: UserRole.CS }])
+    .values([{ name: 'Test', email: 'test@test.com', role: UserRole.SUPPORT }])
     // .onConflict(oc => oc.column('name').doNothing()) // : )
     .execute()
 
@@ -16,4 +16,4 @@ main()
   .catch(async e => {
     console.error(e)
   })
-  .finally(() => process.exit(1))
+  .finally(() => process.exit(0))

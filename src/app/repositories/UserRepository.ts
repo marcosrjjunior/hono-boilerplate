@@ -3,10 +3,10 @@ import UserRole from '../../lib/db/schema/public/UserRole'
 import {
   CountUserParams,
   CountUsersResponse,
-  UserRepositoryInterface,
-} from './interfaces/UserRepositoryInterface'
+  IUserRepository,
+} from './interfaces/IUserRepository'
 
-class UserRepository implements UserRepositoryInterface {
+class UserRepository implements IUserRepository {
   count = async ({ where }: CountUserParams): Promise<CountUsersResponse> => {
     const { ...condition } = where
 

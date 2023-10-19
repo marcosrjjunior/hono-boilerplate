@@ -54,5 +54,9 @@
       "version": "detect"
     }
   },
-  "ignorePatterns": ["**/build/*.js", "*.queries.ts"]
+  "ignorePatterns": [
+    "**/build/*.js",
+    "*.queries.ts",
+    "src/lib/db/schema/public/PublicSchema.ts"
+  ]
 }

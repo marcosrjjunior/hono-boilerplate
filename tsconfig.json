@@ -5,6 +5,9 @@
     "strict": true,
     "jsx": "react-jsx",
     "jsxImportSource": "hono/jsx",
-    "types": ["bun-types"]
+    "types": ["bun-types"],
+    "skipLibCheck": true,
+    // Nodejs constumisation
+    "outDir": "./dist"
   }
 }

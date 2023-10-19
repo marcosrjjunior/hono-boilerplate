@@ -13,6 +13,6 @@ export type CountUsersResponse = {
   count: number
 }
 
-export interface UserRepositoryInterface {
+export interface IUserRepository {
   count(params: CountUserParams): Promise<CountUsersResponse>
 }

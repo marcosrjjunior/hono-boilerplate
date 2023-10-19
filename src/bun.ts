@@ -1,4 +1,5 @@
 import { Hono } from 'hono'
+
 import { routes } from './routes'
 
 const app = new Hono()
@@ -16,4 +17,7 @@ app.onError((err, c) => {
 //   return c.text('404 Not found', 404)
 // })
 
-export default app
+export default {
+  ...app,
+  port: process.env.PORT,
+}
