@@ -4,7 +4,7 @@ import { softDelete, withTimestamps } from '../utils'
 
 export async function up(db: Kysely<any>): Promise<void> {
   await db.schema
-    .createType('userRole')
+    .createType('user_role')
     .asEnum(['SUPPORT', 'SALES', 'CS'])
     .execute()
 
@@ -15,10 +15,10 @@ export async function up(db: Kysely<any>): Promise<void> {
     )
     .addColumn('name', 'text')
     .addColumn('email', 'text', col => col.unique().notNull())
-    .addColumn('emailVerified', 'timestamptz')
+    .addColumn('email_verified', 'timestamptz')
     .addColumn('image', 'text')
-    .addColumn('mobilePhoneNumber', 'varchar')
-    .addColumn('role', sql`"userRole"`, col => col.notNull())
+    .addColumn('mobile_phone_number', 'varchar')
+    .addColumn('role', sql`"user_role"`, col => col.notNull())
     .$call(withTimestamps)
     .$call(softDelete)
     .execute()
@@ -26,5 +26,5 @@ export async function up(db: Kysely<any>): Promise<void> {
 
 export async function down(db: Kysely<any>): Promise<void> {
   await db.schema.dropTable('users').ifExists().execute()
-  await db.schema.dropType('userRole').ifExists().execute()
+  await db.schema.dropType('user_role').ifExists().execute()
 }

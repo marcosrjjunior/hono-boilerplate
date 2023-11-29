@@ -11,10 +11,10 @@ export default interface KyselyMigrationTable {
   name: ColumnType<
     KyselyMigrationName,
     KyselyMigrationName,
-    KyselyMigrationName | null
+    KyselyMigrationName
   >
 
-  timestamp: ColumnType<string, string, string | null>
+  timestamp: ColumnType<string, string, string>
 }
 
 export type KyselyMigration = Selectable<KyselyMigrationTable>

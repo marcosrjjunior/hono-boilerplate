@@ -13,10 +13,10 @@ export default interface KyselyMigrationLockTable {
   id: ColumnType<
     KyselyMigrationLockId,
     KyselyMigrationLockId,
-    KyselyMigrationLockId | null
+    KyselyMigrationLockId
   >
 
-  is_locked: ColumnType<number, number | null, number | null>
+  is_locked: ColumnType<number, number | undefined, number>
 }
 
 export type KyselyMigrationLock = Selectable<KyselyMigrationLockTable>

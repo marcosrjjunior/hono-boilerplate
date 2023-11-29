@@ -21,13 +21,13 @@ describe('Count users', () => {
   })
 
   it('should throw with an invalid role', async () => {
-    const request = useCase.execute({
-      where: {
-        role: 'Invalid role' as any,
-      },
-    })
+    const request = async () =>
+      await useCase.execute({
+        where: {
+          role: 'Invalid role' as any,
+        },
+      })
 
-    const response = async () => await request
-    expect(response).toThrow()
+    expect(request).toThrow()
   })
 })

@@ -10,13 +10,13 @@ export type UsersId = string & { __brand: 'UsersId' }
 
 /** Represents the table public.users */
 export default interface UsersTable {
-  id: ColumnType<UsersId, UsersId | null, UsersId | null>
+  id: ColumnType<UsersId, UsersId | undefined, UsersId>
 
   name: ColumnType<string | null, string | null, string | null>
 
-  email: ColumnType<string, string, string | null>
+  email: ColumnType<string, string, string>
 
-  emailVerified: ColumnType<
+  email_verified: ColumnType<
     Date | null,
     Date | string | null,
     Date | string | null
@@ -24,13 +24,13 @@ export default interface UsersTable {
 
   image: ColumnType<string | null, string | null, string | null>
 
-  mobilePhoneNumber: ColumnType<string | null, string | null, string | null>
+  mobile_phone_number: ColumnType<string | null, string | null, string | null>
 
-  role: ColumnType<UserRole, UserRole, UserRole | null>
+  role: ColumnType<UserRole, UserRole, UserRole>
 
-  createdAt: ColumnType<Date, Date | string | null, Date | string | null>
+  createdAt: ColumnType<Date, Date | string | undefined, Date | string>
 
-  updatedAt: ColumnType<Date, Date | string | null, Date | string | null>
+  updatedAt: ColumnType<Date, Date | string | undefined, Date | string>
 
   deletedAt: ColumnType<Date | null, Date | string | null, Date | string | null>
 }
