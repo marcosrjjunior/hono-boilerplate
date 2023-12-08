@@ -32,7 +32,7 @@ Install dependencies and run the project
 
 ```
 pnpm install
-pnpm run dev:node
+pnpm run node:dev
 ```
 
 Dependencies
