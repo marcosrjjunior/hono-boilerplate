@@ -2,23 +2,24 @@
 
 Structure that I've been using on my backend projects.
 
-#### Structure
+[Project Structure](#project-structure)  
+[Run using Nodejs](#run-using-nodejs)  
+[Database](#database)  
+[Run test](#run-test)  
+[Extra Dependencies](#extra-dependencies)
+
+#### Project Structure
 
 The main app implementation is inside of the `/app` directory where it uses basic js node implementation.
 
 This project is structured on top of [Hono](https://hono.dev) which follows the Web Standard API.
 
-`/routes`: it holds the routes of the application.
-
-`/node.ts`: This is the initial file to run the project using node.
-
-`/bun.ts`: This is the initial file to run the project using bun.
-
-`/lib/db`: Contain the Database structure. Migrations, seed and types.
-
-`/app/cases`: Contain use cases of your application.
-
-`/app/cases`: Contain repositores and interfaces that are used by use cases.
+`/routes`: it holds the routes of the application.  
+`/node.ts`: This is the initial file to run the project using node.  
+`/bun.ts`: This is the initial file to run the project using bun.  
+`/lib/db`: Contain the Database structure. Migrations, seed and types.  
+`/app/cases`: Contain use cases of your application.  
+`/app/repositories`: Contain repositores and interfaces that are used by use cases.
 
 ---
 
@@ -37,12 +38,7 @@ pnpm install
 pnpm run node:dev
 ```
 
-Dependencies
-
-```sh
-@hono/node-server
-typescript
-```
+---
 
 #### Run using Bun
 
@@ -114,3 +110,16 @@ pnpm test
 ```
 
 > Reference: https://bun.sh/docs/cli/test#run-tests
+
+##### Extra Dependencies
+
+> To run the project using nodejs, we need some extra dependencies.
+
+```sh
+// dependencies
+@hono/node-server
+
+// devDependencies
+typescript
+ts-node-dev
+```
