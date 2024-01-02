@@ -1,7 +1,7 @@
 {
   "name": "hono-kysely-boilerplate",
   "description": "boilerplate to run a js server using bun or node",
-  "version": "1.0.0",
+  "version": "1.0.5",
   "author": "Marcos <hello@marcosrjjunior.com>",
   "scripts": {
     "dev": "bun run --hot src/bun.ts",
