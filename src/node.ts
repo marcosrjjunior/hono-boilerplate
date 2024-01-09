@@ -1,10 +1,13 @@
 import { Hono } from 'hono'
+import { csrf } from 'hono/csrf'
 
 import { serve } from '@hono/node-server'
 
 import { routes } from './routes'
 
 const app = new Hono()
+
+app.use('*', csrf())
 
 routes(app)
 
