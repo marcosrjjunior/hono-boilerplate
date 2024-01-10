@@ -1,7 +1,7 @@
 {
   "name": "hono-kysely-boilerplate",
   "description": "boilerplate to run a js server using bun or node",
-  "version": "1.0.6",
+  "version": "1.0.7",
   "author": "Marcos <hello@marcosrjjunior.com>",
   "scripts": {
     "dev": "bun run --hot src/bun.ts",
@@ -24,7 +24,7 @@
   },
   "dependencies": {
     "@hono/node-server": "^1.4.0",
-    "hono": "^3.12.0",
+    "hono": "^3.12.1",
     "kysely": "^0.27.2",
     "kysely-migration-cli": "^0.2.3",
     "pg": "^8.11.3",
@@ -34,7 +34,7 @@
     "@types/pg": "^8.10.9",
     "@typescript-eslint/eslint-plugin": "^6.18.1",
     "@typescript-eslint/parser": "^6.18.1",
-    "bun-types": "^1.0.21",
+    "bun-types": "^1.0.22",
     "dotenv": "^16.3.1",
     "eslint": "^8.56.0",
     "eslint-config-prettier": "^9.1.0",
