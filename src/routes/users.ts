@@ -12,15 +12,11 @@ users.post('/count', async c => {
 
   const { where } = await c.req.json()
 
-  try {
-    const response = await countUsers.execute({
-      where,
-    })
+  const response = await countUsers.execute({
+    where,
+  })
 
-    return c.json(response, 200)
-  } catch (e: any) {
-    return c.text(e.message, e.status || 500)
-  }
+  return c.json(response, 200)
 })
 
 users.get('/:id', c => {

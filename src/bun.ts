@@ -9,10 +9,20 @@ app.use('*', csrf())
 
 routes(app)
 
-app.onError((err, c) => {
-  // This is the a global error
-  console.error(`${err}`)
-  return c.text('Custom Error Message', 500)
+app.onError((error, c) => {
+  // Log error (Sentry, ....)
+  // captureException({
+  //   error: error,
+  //   extra: {
+  //     function: '[FILENAME:FUNCTIONAME]',
+  //   },
+  // })
+
+  console.error(`${error}`)
+  return c.json(
+    { error, message: error.message || 'Custom Error Message' },
+    500,
+  )
 })
 
 // app.notFound(c => {
