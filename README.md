@@ -49,6 +49,9 @@ bun run dev
 
 ## Database
 
+Make sure you have a database running locally,
+(There is an initial docker-compose that spins up a postgres in case you need, you can just run `pmpm db:pg`).
+
 Create an initial database and make sure the env variables are correctly set
 
 ```sh

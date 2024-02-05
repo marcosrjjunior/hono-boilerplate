@@ -17,6 +17,7 @@
     "db:reset": "pnpm db:migrate:redo && pnpm db:seed",
     "db:generate:types": "kanel && pnpm db:types:prettier",
     "db:types:prettier": "prettier --write ./src/lib/db/schema && eslint ./src/lib/db/schema --ext .ts,.tsx --fix",
+    "db:pg": "docker-compose -f docker-compose.yaml up -d",
     "check-types": "tsc --noemit",
     "lint": "eslint ./src/ --ext .ts --max-warnings 0 && pnpm check-types",
     "lint:fix": "eslint ./src --ext .ts,.tsx --fix",
