@@ -27,13 +27,13 @@ The main app implementation is inside of the `/app` directory where it uses basi
 
 ---
 
-### 1. Requirements
+#### Requirements
 
 - [node.js v20+](https://nodejs.org/en) or [bun](https://bun.sh)
 - nvm installed to manage node versions https://github.com/nvm-sh/nvm#install--update-script
 - [pnpm](https://pnpm.io) to manage dependencies(npm install -g pnpm)
 
-#### 2. Setup
+#### Setup
 
 **- Setup your database**
 
