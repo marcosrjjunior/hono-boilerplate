@@ -1,8 +1,6 @@
 ## Hono Boilerplate
 
-Boilerplate for your JS projects using [Hono](https://hono.dev).
-
-There is a setup to run your project using Nodejs or Bun.
+Boilerplate for your Typescript projects using [Hono](https://hono.dev).
 
 An initial setup with [Kysely](https://kysely.dev) to manage your Database (queries, migrations, types) is also in place.
 
@@ -19,28 +17,29 @@ An initial setup with [Kysely](https://kysely.dev) to manage your Database (quer
 The main app implementation is inside of the `/app` directory where it uses basic js node implementation.
 
 `/routes`: Routes of the application.  
-`/node.ts`: Initial file to run the project using node.  
-`/bun.ts`: Initial file to run the project using bun.  
 `/lib/db`: Database structure. Migrations, seed and types.  
 `/app/cases`: Use cases of your application.  
-`/app/repositories`: Repositores and interfaces that are used by use cases.
+`/app/repositories`: Repositores and interfaces that are used by the use cases.
+
+`/node.ts`: Initial file to run the project using node.  
+`/bun.ts`: Initial file to run the project using bun.
 
 ---
 
-#### Requirements
+### Requirements
 
 - [node.js v20+](https://nodejs.org/en) or [bun](https://bun.sh)
 - nvm installed to manage node versions https://github.com/nvm-sh/nvm#install--update-script
 - [pnpm](https://pnpm.io) to manage dependencies(npm install -g pnpm)
 
-#### Setup
+### Setup
 
-**- Setup your database**
+#### **- Setup your database**
 
-- Make sure you have a local database running. In this project you can find a docker-compose file that spin-up a postgree db. You can run that by using `pnpm db:pg`. After the first time, you can simply open your "Docker desktop" or whatever you use to manage docker to start up the service.
+- Make sure you have a local database running. I recommend using [dbngin](https://dbngin.com) to spin up an local DB on your machine, but if you prefer docker, there is also a docker-compose file that you can run that by using `pnpm db:pg`. After the first time, you can simply open your "Docker desktop" or whatever you use to manage docker to start up the service.
 - Create your database running `CREATE DATABASE project`
 
-**- Update your environment variables**
+#### **- Update your environment variables**
 
 Create a `.env` files from `.env.example` and populate the values.
 
@@ -48,22 +47,24 @@ Create a `.env` files from `.env.example` and populate the values.
 cp .env.example .env
 ```
 
-**- Install your dependencies**
+#### **- Install your dependencies**
 
-If you are using nodejs
-
+<details>
+<summary>Nodejs</summary>
 ```sh
 nvm use
 pnpm install
 ```
+</details>
 
-Or if you are using bun
-
+<details>
+<summary>Bun</summary>
 ```sh
 bun install
 ```
+</details>
 
-**- Run the project**
+#### **- Run the project**
 
 If you are using nodejs
 
@@ -137,12 +138,14 @@ pnpm test
 
 > Reference: https://bun.sh/docs/cli/test#run-tests
 
-##### Extra Dependencies
+## Dependencies
+
+**Nodejs**
 
 > To run the project using nodejs, we need some extra dependencies.
 > These are already set in the project.
 
-```sh
+```json
 // dependencies
 @hono/node-server
 
