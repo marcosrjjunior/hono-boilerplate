@@ -1,7 +1,7 @@
 {
   "name": "hono-boilerplate",
   "description": "boilerplate to run a js server using bun or node",
-  "version": "1.0.74",
+  "version": "1.0.75",
   "author": "Marcos <hello@marcosrjjunior.com>",
   "scripts": {
     "bun:dev": "bun run --hot src/bun.ts",
@@ -27,7 +27,7 @@
   "dependencies": {
     "@hono/node-server": "^1.8.2",
     "hono": "^4.0.10",
-    "kysely": "^0.27.2",
+    "kysely": "^0.27.3",
     "kysely-migration-cli": "^0.3.0",
     "pg": "^8.11.3",
     "zod": "^3.22.4"

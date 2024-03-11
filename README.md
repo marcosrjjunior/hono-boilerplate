@@ -50,18 +50,24 @@ cp .env.example .env
 #### **- Install your dependencies**
 
 <details>
+
 <summary>Nodejs</summary>
+
 ```sh
 nvm use
 pnpm install
 ```
+
 </details>
 
 <details>
+
 <summary>Bun</summary>
+
 ```sh
 bun install
 ```
+
 </details>
 
 #### **- Run the project**
@@ -145,7 +151,7 @@ pnpm test
 > To run the project using nodejs, we need some extra dependencies.
 > These are already set in the project.
 
-```json
+```
 // dependencies
 @hono/node-server
 
