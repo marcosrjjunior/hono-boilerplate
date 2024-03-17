@@ -1,45 +1,62 @@
-## Hono Boilerplate
+# Hono Boilerplate
 
-Boilerplate for your Typescript projects using [Hono](https://hono.dev).
+Boilerplate for your typescript projects using [Hono](https://hono.dev).
 
-An initial setup with [Kysely](https://kysely.dev) to manage your Database (queries, migrations, types) is also in place.
+[Project Structure](#project-structure)  
+[Tech Stack](#tech-stack)  
+[Requirements](#requirements)  
+[Run Locally](#run-locally)  
+[Manage your database using migrations](#manage-your-database-using-migrations)  
+[Run test](#run-test)  
+[FAQ](#faq)  
+[Dependencies](#dependencies)
 
-<!--
-[Project Structure](#project-structure)
-[Run using Nodejs](#run-using-nodejs)
-[Run using Bun](#run-using-bun)
-[Database](#database)
-[Run test](#run-test)
-[Extra Dependencies](#extra-dependencies) -->
-
-### Project Structure
+## Project Structure
 
 The main app implementation is inside of the `/app` directory where it uses basic js node implementation.
 
-`/routes`: Routes of the application.  
-`/lib/db`: Database structure. Migrations, seed and types.  
-`/app/cases`: Use cases of your application.  
-`/app/repositories`: Repositores and interfaces that are used by the use cases.
+```sh
+"/routes": Routes of the application.
+"/lib/db": Database structure. Migrations, seed and types.
+"/app/cases": Use cases of your application.
+"/app/repositories": Repositores and interfaces that are used by the use cases.
 
-`/node.ts`: Initial file to run the project using node.  
-`/bun.ts`: Initial file to run the project using bun.
+"/node.ts": Initial file to run the project using node.
+"/bun.ts": Initial file to run the project using bun.
+```
 
----
+## Tech Stack
 
-### Requirements
+**Geral:** [Hono](https://hono.dev), [Zod](https://zod.dev), Eslint  
+**Database:** [Kysely](https://kysely.dev) (queries, migrations, types)  
+**Test:** [Bun test](https://bun.sh/docs/cli/test)
 
-- [node.js v20+](https://nodejs.org/en) or [bun](https://bun.sh)
-- nvm installed to manage node versions https://github.com/nvm-sh/nvm#install--update-script
-- [pnpm](https://pnpm.io) to manage dependencies(npm install -g pnpm)
+## Requirements
 
-### Setup
+[node.js v20+](https://nodejs.org/en) or [bun](https://bun.sh)  
+[nvm](https://github.com/nvm-sh/nvm#install--update-script) installed to manage node versions  
+[pnpm](https://pnpm.io) to manage dependencies(npm install -g pnpm)
 
-#### **- Setup your database**
+## Run Locally
 
-- Make sure you have a local database running. I recommend using [dbngin](https://dbngin.com) to spin up an local DB on your machine, but if you prefer docker, there is also a docker-compose file that you can run that by using `pnpm db:pg`. After the first time, you can simply open your "Docker desktop" or whatever you use to manage docker to start up the service.
-- Create your database running `CREATE DATABASE project`
+<details>
 
-#### **- Update your environment variables**
+<summary>📁 Setup your database</summary>
+
+I recommend using [dbngin](https://dbngin.com) to spin up an local DB on your machine.
+
+> [!NOTE]  
+> If you prefer docker, there is also a docker-compose file that you can run that by using `pnpm db:pg`. After the first time, you can simply open your "Docker desktop" or whatever you use to manage docker to start up the service.
+
+Create your database
+
+```
+CREATE DATABASE project
+```
+
+</details>
+
+#### **Update your environment variables**
 
 Create a `.env` files from `.env.example` and populate the values.
 
@@ -47,7 +64,7 @@ Create a `.env` files from `.env.example` and populate the values.
 cp .env.example .env
 ```
 
-#### **- Install your dependencies**
+#### **Install your dependencies**
 
 <details>
 
@@ -70,25 +87,33 @@ bun install
 
 </details>
 
-#### **- Run the project**
+#### **Run the project**
 
-If you are using nodejs
+<details>
+
+<summary>Nodejs</summary>
 
 ```sh
 pnpm node:dev or pnpm dev
 ```
 
-Or if you are using bun
+</details>
+
+<details>
+
+<summary>Bun</summary>
 
 ```sh
 pnpm bun:dev
 ```
 
+</details>
+
 From here you should be getting a server running on `http://localhost:3333`
 
-## How to manage your Database using migrations
+## Manage your database using migrations
 
-Migrations are currently defined under `lib/db/migrations`. An initial migration is already there as an example, but you will have to adjust to meet your project requirements.
+Migrations are currently defined under `lib/db/migrations`. An initial migration is already there as an example, adjust to meet your project requirements. [Reference](https://kysely.dev/docs/migrations)
 
 Run all migrations
 
@@ -144,6 +169,71 @@ pnpm test
 
 > Reference: https://bun.sh/docs/cli/test#run-tests
 
+## FAQ
+
+<details>
+
+<summary>Why this structure?</summary>
+
+This is a personal preference, It also depends on your application and how you are deploying.
+
+I've been using this case structure for some time and enjoying but still improving/learning as I go.
+
+I usually try to find the middle term on structural side in terms of complexity for various reasons.
+
+Just a personal recommendation, try not get too attached to one framework or another. I believe you can get way more value spending time structuring your code, learning about patterns in a way that can benefit your team, projects, clients.
+
+Again, feel free to adapt to your needs.
+
+[Hono best practices](https://hono.dev/guides/best-practices#best-practices)  
+[Hono presets](https://hono.dev/api/presets#which-preset-should-i-use)
+
+</details>
+
+<details>
+
+<summary>Framework agnostic?</summary>
+
+Thanks for the simplicity of hono you can basically structure your project in a way that fits your situation.
+
+This core of this project is all under the `/app` directory, where I'm using only JS, none of the files there are mentioned hono. That means if in some weird scenario you need to move away from hono, you can just copy the app directory and make the requests to the cases accordinly.
+
+</details>
+
+<details>
+
+<summary>Bun or node?</summary>
+
+Because of this structure I can easily switch between them to test. Based on my situation and project, I'd still recommend to use nodejs.
+
+There is a noticeable delay on requests to s3 using bun still. [Github Issue](https://github.com/oven-sh/bun/issues/7428)
+
+> Last test on: March 07, 2024
+
+It all depends on your project and situation. Bun will probably be more performant and consume less memory, specially on a production environment. The only blocker for me at this point is the one mentioned above, so I still can't tell
+
+I'm mainly using bun to run my tests and it work just fine since it is [based on jest](https://bun.sh/docs/cli/test).
+
+</details>
+
+<details>
+
+<summary>Why hono?</summary>
+
+[Features](https://hono.dev/top#features)
+
+Coming from previous experiences using express.js and fastify. Hono is powerful, simple to use and has an active community.
+
+Give it a go.
+
+Here are some simple benchmarks (they don't mean much)  
+[Requests benchmark](https://web-frameworks-benchmark.netlify.app/result?f=express,hono,fastify,hono-bun)  
+[Compare benchmark](https://web-frameworks-benchmark.netlify.app/compare?f=express,hono,fastify,hono-bun)
+
+If you still don't buy it, fastify it is also a great option.
+
+</details>
+
 ## Dependencies
 
 **Nodejs**
@@ -159,3 +249,5 @@ pnpm test
 typescript
 ts-node-dev
 ```
+
+---
