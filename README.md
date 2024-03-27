@@ -9,7 +9,8 @@ Boilerplate for your typescript projects using [Hono](https://hono.dev).
 [Manage your database using migrations](#manage-your-database-using-migrations)  
 [Run test](#run-test)  
 [FAQ](#faq)  
-[Dependencies](#dependencies)
+[Dependencies](#dependencies)  
+[Extras](#extras)
 
 ## Project Structure
 
@@ -179,7 +180,7 @@ This is a personal preference, It also depends on your application and how you a
 
 I've been using this case structure for some time and enjoying but still improving/learning as I go.
 
-I usually try to find the middle term on structural side in terms of complexity for various reasons.
+I usually try to find the middle term on structural side for various reasons.
 
 Just a personal recommendation, try not get too attached to one framework or another. I believe you can get way more value spending time structuring your code, learning about patterns in a way that can benefit your team, projects, clients.
 
@@ -196,7 +197,7 @@ Again, feel free to adapt to your needs.
 
 Thanks for the simplicity of hono you can basically structure your project in a way that fits your situation.
 
-This core of this project is all under the `/app` directory, where I'm using only JS, none of the files there are mentioned hono. That means if in some weird scenario you need to move away from hono, you can just copy the app directory and make the requests to the cases accordinly.
+This core of this project is all under the `/app` directory, where I'm using only JS, none of the files there are related to hono. That means, if for some unexpected reason/scenario you need to move away from hono, you can just copy the app directory and make the requests to the cases accordinly.
 
 </details>
 
@@ -248,6 +249,44 @@ If you still don't buy it, fastify it is also a great option.
 // devDependencies
 typescript
 ts-node-dev
+```
+
+---
+
+## Extras
+
+#### Adding sentry
+
+- For the setup you can use the [hono middleware](https://github.com/honojs/middleware/tree/main/packages/sentry) created for that, you can follow the instructions on the readme there.
+
+The setup is basically adding the middleware on the initial file.
+
+```ts
+...
+import { sentry } from '@hono/sentry'
+...
+
+app.use(
+  '*',
+  sentry({
+    dsn: process.env.SENTRY_DNS,
+    tracesSampleRate: isProduction ? 0.2 : 0.8,
+    environment,
+  }),
+)
+```
+
+Then you can call on your global `app.onError`
+
+```ts
+app.onError((error, c) => {
+  c.get('sentry').captureException(e, {
+    tags: {}, // any tag
+    extra: {}, // any extra object
+  })
+
+  return c.json({ error, message: error.message || 'Unknown Error' }, 500)
+})
 ```
 
 ---
