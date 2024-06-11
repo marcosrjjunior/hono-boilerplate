@@ -207,9 +207,9 @@ This core of this project is all under the `/app` directory, where I'm using onl
 
 Because of this structure I can easily switch between them to test. Based on my situation and project, I'd still recommend to use nodejs.
 
-There is a noticeable delay on requests to s3 using bun still. [Github Issue](https://github.com/oven-sh/bun/issues/7428)
+There is a noticeable delay on requests to s3 using bun still. [Github Issue](https://github.com/oven-sh/bun/issues/7428#issuecomment-2132580081)
 
-> Last test on: March 07, 2024
+> Last test on: May 30, 2024
 
 It all depends on your project and situation. Bun will probably be more performant and consume less memory, specially on a production environment. The only blocker for me at this point is the one mentioned above, so I still can't tell
 
