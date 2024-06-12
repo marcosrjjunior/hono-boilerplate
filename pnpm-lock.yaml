@@ -61,8 +61,8 @@ importers:
         specifier: ^3.8.9
         version: 3.8.9
       kanel-kysely:
-        specifier: ^0.4.0
-        version: 0.4.0
+        specifier: ^0.5.0
+        version: 0.5.0
       prettier:
         specifier: ^3.2.5
         version: 3.2.5
@@ -168,8 +168,8 @@ packages:
   '@types/json-schema@7.0.15':
     resolution: {integrity: sha512-5+fP8P8MFNC+AyZCDxrB2pkZFPGzqQWUzpSeuuVLvm8VMcorNYavBqoFcxK8bQz4Qsbn4oUEEem4wDLfcysGHA==}
 
-  '@types/node@20.12.12':
-    resolution: {integrity: sha512-eWLDGF/FOSPtAvEqeRAQ4C8LSA7M1I7i0ky1I8U7kD1J5ITyW3AsRhQrKVoWf5pFKZ2kILsEGJhsI9r93PYnOw==}
+  '@types/node@20.12.14':
+    resolution: {integrity: sha512-scnD59RpYD91xngrQQLGkE+6UrHUPzeKZWhhjBSa3HSkwjbQc38+q3RoIVEwxQGRw3M+j5hpNAM+lgV3cVormg==}
 
   '@types/node@20.14.2':
     resolution: {integrity: sha512-xyu6WAMVwv6AKFLB+e/7ySZVr/0zLCzOa7rSpq6jNwpqOrUbcACDWC+53d4n2QHOnDou0fbIsg8wZu/sxrnI4Q==}
@@ -710,8 +710,8 @@ packages:
   jsonpath@1.1.1:
     resolution: {integrity: sha512-l6Cg7jRpixfbgoWgkrl77dgEj8RPvND0wMH6TwQmi9Qs4TFfS9u5cUFnbeKTwj5ga5Y3BTGGNI28k117LJ009w==}
 
-  kanel-kysely@0.4.0:
-    resolution: {integrity: sha512-kPvF7Miw9PzIH6I71sQPTqKHQUCKa22G7OlJrFODvDAyr5abih9a5GZNaKif3iSorz/GfEQVc1W4TEnVws2xJw==}
+  kanel-kysely@0.5.0:
+    resolution: {integrity: sha512-dpoU60OhCzjsmajgB5hR9P0eLyM8gn9V/VC4CEP0+j38d9nrGdi81iWax6c+2Ol5AUupRr3DX2Vbj0Jj81rBrw==}
 
   kanel@3.8.9:
     resolution: {integrity: sha512-YXAYpjnqRFHnODefWfrKlxwTj0aiYU1zOkAFUL7Ucr6xGyjX4HSkUeNh/z5VynZr0iJdp/jqGIfV+3qiqigpeQ==}
@@ -991,8 +991,8 @@ packages:
   ramda@0.29.1:
     resolution: {integrity: sha512-OfxIeWzd4xdUNxlWhgFazxsA/nl3mS4/jGZI5n00uWOoSSFRhC1b6gl6xvmzUamgmqELraWp0J/qqVlXYPDPyA==}
 
-  ramda@0.30.0:
-    resolution: {integrity: sha512-13Y0iMhIQuAm/wNGBL/9HEqIfRGmNmjKnTPlKWfA9f7dnDkr8d45wQ+S7+ZLh/Pq9PdcGxkqKUEA7ySu1QSd9Q==}
+  ramda@0.30.1:
+    resolution: {integrity: sha512-tEF5I22zJnuclswcZMc8bDIrwRHRzf+NqVEmqg50ShAZMP7MWeR/RGDthfM/p+BlqvF2fXAzpn8i+SJcYD3alw==}
 
   readdirp@3.6.0:
     resolution: {integrity: sha512-hOS089on8RduqdbhvQ5Z37A0ESjsqz6qnRcffsMU3495FuTdqSm+7bhJ29JvIOsBDEEnan5DPu9t3To9VRlMzA==}
@@ -1312,7 +1312,7 @@ snapshots:
 
   '@types/json-schema@7.0.15': {}
 
-  '@types/node@20.12.12':
+  '@types/node@20.12.14':
     dependencies:
       undici-types: 5.26.5
 
@@ -1322,7 +1322,7 @@ snapshots:
 
   '@types/pg@8.11.6':
     dependencies:
-      '@types/node': 20.12.12
+      '@types/node': 20.14.2
       pg-protocol: 1.6.1
       pg-types: 4.0.2
 
@@ -1334,7 +1334,7 @@ snapshots:
 
   '@types/ws@8.5.10':
     dependencies:
-      '@types/node': 20.12.12
+      '@types/node': 20.12.14
 
   '@typescript-eslint/eslint-plugin@7.7.1(@typescript-eslint/parser@7.8.0(eslint@8.57.0)(typescript@5.4.5))(eslint@8.57.0)(typescript@5.4.5)':
     dependencies:
@@ -1517,7 +1517,7 @@ snapshots:
 
   bun-types@1.1.9:
     dependencies:
-      '@types/node': 20.12.12
+      '@types/node': 20.12.14
       '@types/ws': 8.5.10
 
   callsites@3.1.0: {}
@@ -1887,7 +1887,7 @@ snapshots:
       static-eval: 2.0.2
       underscore: 1.12.1
 
-  kanel-kysely@0.4.0:
+  kanel-kysely@0.5.0:
     dependencies:
       '@kristiandupont/recase': 1.2.1
 
@@ -1899,7 +1899,7 @@ snapshots:
       extract-pg-schema: 5.1.1
       optionator: 0.9.4
       pg: 8.12.0
-      ramda: 0.30.0
+      ramda: 0.30.1
       rmfr: 2.0.0
       tagged-comment-parser: 1.3.6
     transitivePeerDependencies:
@@ -2154,7 +2154,7 @@ snapshots:
 
   ramda@0.29.1: {}
 
-  ramda@0.30.0: {}
+  ramda@0.30.1: {}
 
   readdirp@3.6.0:
     dependencies:

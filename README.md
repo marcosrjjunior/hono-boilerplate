@@ -160,6 +160,11 @@ This will generate a new file under `/lib/db/migrations/DATE-initial.ts`
 
 - Functions **up** and **down** should work.
 
+##### DB types
+
+This project is using kanel to generate types, it handles better types and enums when using with postgres.  
+If you need to use a different database, I recommend [kysely-codegen](https://github.com/RobinBlomberg/kysely-codegen) instead.
+
 ## Run test
 
 Tests are implemented using bun which follows a jest-compatible structure.
@@ -288,5 +293,9 @@ app.onError((error, c) => {
   return c.json({ error, message: error.message || 'Unknown Error' }, 500)
 })
 ```
+
+#### Connection example using tursodb (sqlie)
+
+- [Gist example](https://gist.github.com/marcosrjjunior/0a717f4b8b584a13fb36fdec4398d048)
 
 ---
