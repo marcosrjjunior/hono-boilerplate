@@ -253,7 +253,7 @@ If you still don't buy it, fastify it is also a great option.
 
 // devDependencies
 typescript
-ts-node-dev
+tsx
 ```
 
 ---

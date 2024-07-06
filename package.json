@@ -6,20 +6,20 @@
   "scripts": {
     "bun:dev": "bun run --hot src/bun.ts",
     "dev": "pnpm node:dev",
-    "node:dev": "tsnd -r dotenv/config --respawn src/node.ts",
+    "node:dev": "tsx -r dotenv/config src/node.ts",
     "node:build": "tsc -p .",
     "node:start": "node ./dist/node.js",
     "test": "bun test",
-    "db:migrate:up": "tsnd -r dotenv/config ./src/lib/db/migrate latest",
-    "db:migrate:down": "tsnd -r dotenv/config ./src/lib/db/migrate down",
-    "db:migrate:redo": "tsnd -r dotenv/config ./src/lib/db/migrate redo && pnpm db:generate:types",
-    "db:migrate:create": "ts-node -r dotenv/config ./src/lib/db/migrate create initial",
-    "db:seed": "tsnd -r dotenv/config ./src/lib/db/seed",
+    "db:migrate:up": "tsx -r dotenv/config ./src/lib/db/migrate latest",
+    "db:migrate:down": "tsx -r dotenv/config ./src/lib/db/migrate down",
+    "db:migrate:redo": "tsx -r dotenv/config ./src/lib/db/migrate redo && pnpm db:generate:types",
+    "db:migrate:create": "tsx -r dotenv/config ./src/lib/db/migrate create initial",
+    "db:seed": "tsx -r dotenv/config ./src/lib/db/seed",
     "db:reset": "pnpm db:migrate:redo && pnpm db:seed",
     "db:generate:types": "kanel && pnpm db:types:prettier",
     "db:types:prettier": "prettier --write ./src/lib/db/schema && eslint ./src/lib/db/schema --ext .ts,.tsx --fix",
     "check-types": "tsc --noemit",
-    "lint": "eslint ./src/ --ext .ts --max-warnings 0 && pnpm check-types",
+    "lint": "eslint ./src --ext .ts --max-warnings 0 && pnpm check-types",
     "lint:fix": "eslint ./src --ext .ts,.tsx --fix",
     "prettier": "prettier --write ./src"
   },
@@ -34,8 +34,8 @@
   "devDependencies": {
     "@types/bun": "^1.1.6",
     "@types/pg": "^8.11.6",
-    "@typescript-eslint/eslint-plugin": "^7.7.1",
-    "@typescript-eslint/parser": "^7.8.0",
+    "@typescript-eslint/eslint-plugin": "^7.15.0",
+    "@typescript-eslint/parser": "^7.15.0",
     "dotenv": "^16.4.5",
     "eslint": "^8.57.0",
     "eslint-config-prettier": "^9.1.0",
@@ -45,7 +45,7 @@
     "kanel": "^3.9.0",
     "kanel-kysely": "^0.5.0",
     "prettier": "^3.3.2",
-    "ts-node-dev": "^2.0.0",
+    "tsx": "^4.16.2",
     "typescript": "^5.5.3"
   }
 }
