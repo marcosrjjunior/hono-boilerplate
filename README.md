@@ -47,7 +47,7 @@ The main app implementation is inside of the `/app` directory where it uses basi
 I recommend using [dbngin](https://dbngin.com) to spin up an local DB on your machine.
 
 > [!NOTE]  
-> If you prefer docker, there is also a docker-compose file that you can run that by using `pnpm db:pg`. After the first time, you can simply open your "Docker desktop" or whatever you use to manage docker to start up the service.
+> If you prefer docker, you can use postgres service from [this docker compose](https://gist.github.com/marcosrjjunior/d5250416b5fe43d982f998c0b7744464)
 
 Create your database
 
