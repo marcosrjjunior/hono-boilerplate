@@ -1,7 +1,7 @@
 {
   "name": "hono-boilerplate",
   "description": "boilerplate to run a js server using bun or node",
-  "version": "1.0.79",
+  "version": "1.0.80",
   "author": "Marcos <hello@marcosrjjunior.com>",
   "scripts": {
     "bun:dev": "bun run --hot src/bun.ts",

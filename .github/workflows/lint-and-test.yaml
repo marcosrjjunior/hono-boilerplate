@@ -1,0 +1,32 @@
+name: Lint and Test
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  lint_and_test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+
+      - name: Setup node and package manager
+        uses: ./.github/actions/setup-node-and-package-manager
+
+      - name: Install bun dependency to run tests
+        uses: oven-sh/setup-bun@v2
+        with:
+          bun-version: latest
+
+      - name: Install dependencies 📦
+        uses: ./.github/actions/pnpm-install
+
+      - name: Run lint
+        run: pnpm lint
+
+      - name: Run tests
+        run: pnpm test
