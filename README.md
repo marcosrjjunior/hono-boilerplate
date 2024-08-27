@@ -181,15 +181,15 @@ pnpm test
 
 <summary>Why this structure?</summary>
 
-This is a personal preference, It also depends on your application and how you are deploying.
+This is a matter of personal preference and depends on your application and deployment process.
 
-I've been using this case structure for some time and enjoying but still improving/learning as I go.
+I've been using this case structure for a while and have found it enjoyable, though I'm still improving and learning as I go.
 
-I usually try to find the middle term on structural side for various reasons.
+I often aim for a balanced approach to structure for various reasons.
 
-Just a personal recommendation, try not get too attached to one framework or another. I believe you can get way more value spending time structuring your code, learning about patterns in a way that can benefit your team, projects, clients.
+As a personal recommendation, try not to become too attached to any one framework. You’ll gain more value by focusing on structuring your code and learning about patterns that can benefit your team, projects, and clients.
 
-Again, feel free to adapt to your needs.
+Feel free to adapt these ideas to fit your needs.
 
 [Hono best practices](https://hono.dev/guides/best-practices#best-practices)  
 [Hono presets](https://hono.dev/api/presets#which-preset-should-i-use)
@@ -200,9 +200,9 @@ Again, feel free to adapt to your needs.
 
 <summary>Framework agnostic?</summary>
 
-Thanks for the simplicity of hono you can basically structure your project in a way that fits your situation.
+Thanks to Hono's simplicity, you can structure your project in a way that suits your needs.
 
-This core of this project is all under the `/app` directory, where I'm using only JS, none of the files there are related to hono. That means, if for some unexpected reason/scenario you need to move away from hono, you can just copy the app directory and make the requests to the cases accordinly.
+The core of this project is located in the /app directory, where I use only JavaScript; none of these files are specific to Hono. This means that if you ever need to switch away from Hono for any reason, you can simply copy the /app directory and adjust the request handling as needed.
 
 </details>
 
@@ -210,15 +210,11 @@ This core of this project is all under the `/app` directory, where I'm using onl
 
 <summary>Bun or node?</summary>
 
-Because of this structure I can easily switch between them to test. Based on my situation and project, I'd still recommend to use nodejs.
+Thanks to this structure, I can easily switch between them for testing. However, I still recommend using Node.js.
 
-There is a noticeable delay on requests to s3 using bun still. [Github Issue](https://github.com/oven-sh/bun/issues/7428#issuecomment-2132580081)
+It really depends on your project and situation. I haven’t had the chance to test it in a large-scale real-world project yet, so I can’t say for sure. However, Bun is expected to be more efficient and use less memory.
 
-> Last test on: May 30, 2024
-
-It all depends on your project and situation. Bun will probably be more performant and consume less memory, specially on a production environment. The only blocker for me at this point is the one mentioned above, so I still can't tell
-
-I'm mainly using bun to run my tests and it work just fine since it is [based on jest](https://bun.sh/docs/cli/test).
+Currently, I'm using Bun to run my tests, and it works well since it’s [based on Jest](https://bun.sh/docs/cli/test).
 
 </details>
 
@@ -228,15 +224,15 @@ I'm mainly using bun to run my tests and it work just fine since it is [based on
 
 [Features](https://hono.dev/top#features)
 
-Coming from previous experiences using express.js and fastify. Hono is powerful, simple to use and has an active community.
+Based on my experience with Express.js and Fastify, I’ve found Hono to be powerful, easy to use, and supported by an active community.
 
-Give it a go.
+Give it a try.
 
-Here are some simple benchmarks (they don't mean much)  
+Here are some basic benchmarks (though they’re not particularly significant).  
 [Requests benchmark](https://web-frameworks-benchmark.netlify.app/result?f=express,hono,fastify,hono-bun)  
 [Compare benchmark](https://web-frameworks-benchmark.netlify.app/compare?f=express,hono,fastify,hono-bun)
 
-If you still don't buy it, fastify it is also a great option.
+If you're still not convinced, Fastify is also an excellent option.
 
 </details>
 
