@@ -24,15 +24,15 @@
     "prettier": "prettier --write ./src"
   },
   "dependencies": {
-    "@hono/node-server": "^1.12.1",
-    "hono": "^4.5.6",
+    "@hono/node-server": "^1.12.2",
+    "hono": "^4.5.9",
     "kysely": "^0.27.4",
     "kysely-migration-cli": "^0.4.2",
     "pg": "^8.12.0",
     "zod": "^3.23.8"
   },
   "devDependencies": {
-    "@types/bun": "^1.1.6",
+    "@types/bun": "^1.1.8",
     "@types/pg": "^8.11.6",
     "@typescript-eslint/eslint-plugin": "^7.15.0",
     "@typescript-eslint/parser": "^7.15.0",
@@ -45,7 +45,7 @@
     "kanel": "^3.9.1",
     "kanel-kysely": "^0.5.0",
     "prettier": "^3.3.3",
-    "tsx": "^4.17.0",
+    "tsx": "^4.19.0",
     "typescript": "^5.5.4"
   }
 }
