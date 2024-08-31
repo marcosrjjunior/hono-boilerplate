@@ -6,7 +6,7 @@
   "scripts": {
     "bun:dev": "bun run --hot src/bun.ts",
     "dev": "pnpm node:dev",
-    "node:dev": "tsx -r dotenv/config src/node.ts",
+    "node:dev": "tsx watch -r dotenv/config src/node.ts",
     "node:build": "tsc -p .",
     "node:start": "node ./dist/node.js",
     "test": "bun test",
@@ -25,7 +25,7 @@
   },
   "dependencies": {
     "@hono/node-server": "^1.12.2",
-    "hono": "^4.5.9",
+    "hono": "^4.5.10",
     "kysely": "^0.27.4",
     "kysely-migration-cli": "^0.4.2",
     "pg": "^8.12.0",
