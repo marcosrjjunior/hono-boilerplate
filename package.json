@@ -33,7 +33,7 @@
   },
   "devDependencies": {
     "@types/bun": "^1.1.8",
-    "@types/pg": "^8.11.6",
+    "@types/pg": "^8.11.8",
     "dotenv": "^16.4.5",
     "eslint": "^9.10.0",
     "eslint-config-prettier": "^9.1.0",
