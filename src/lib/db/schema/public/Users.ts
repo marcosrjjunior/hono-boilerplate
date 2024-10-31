@@ -3,8 +3,6 @@
 
 import type { ColumnType, Selectable, Insertable, Updateable } from 'kysely'
 
-import type { default as UserRole } from './UserRole'
-
 /** Identifier type for public.users */
 export type UsersId = string & { __brand: 'UsersId' }
 
@@ -26,7 +24,7 @@ export default interface UsersTable {
 
   mobile_phone_number: ColumnType<string | null, string | null, string | null>
 
-  role: ColumnType<UserRole, UserRole, UserRole>
+  role: ColumnType<string, string, string>
 
   created_at: ColumnType<Date, Date | string | undefined, Date | string>
 

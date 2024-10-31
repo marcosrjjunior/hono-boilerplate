@@ -1,11 +1,11 @@
-import UserRole from '../../../lib/db/schema/public/UserRole'
+import { Role } from '@/app/models'
 
 /**
  * @interface UserRepository
  **/
 export type CountUserParams = {
   where: {
-    role?: UserRole
+    role?: Role
   }
 }
 

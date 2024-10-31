@@ -1,18 +1,19 @@
 import { describe, it, expect, spyOn } from 'bun:test'
 
-import UserRole from '../../../lib/db/schema/public/UserRole'
-import MockUserRepository from '../../repositories/mock/MockUserRepository'
+import MockUserRepository from '@/app/repositories/mock/MockUserRepository'
+import { Role } from '@/app/models'
+
 import CountUsers from './countUsers'
 
 const mockRepo = new MockUserRepository()
 const useCase = new CountUsers(mockRepo)
 const count = spyOn(mockRepo, 'count')
 
-describe('Count users', () => {
+describe('Count users [Mock]', () => {
   it('should be able to count', async () => {
     const response = await useCase.execute({
       where: {
-        role: UserRole.SUPPORT,
+        role: Role.MEMBER,
       },
     })
 
@@ -20,14 +21,13 @@ describe('Count users', () => {
     expect(response).toEqual({ count: 10 })
   })
 
-  it('should throw with an invalid role', async () => {
-    const request = async () =>
+  it('should throw with an invalid parameters', async () => {
+    expect(async () => {
       await useCase.execute({
         where: {
-          role: 'Invalid role' as any,
+          role: 'Invalid role',
         },
-      })
-
-    expect(request).toThrow()
+      } as any)
+    }).toThrow()
   })
 })

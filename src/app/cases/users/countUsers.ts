@@ -1,10 +1,10 @@
 import { object, nativeEnum } from 'zod'
 
-import UserRole from '../../../lib/db/schema/public/UserRole'
+import { Role } from '../../models'
 import {
   CountUserParams,
   IUserRepository,
-} from '../../repositories/interfaces/IUserRepository'
+} from '@/app/repositories/interfaces/IUserRepository'
 
 export class CountUsers {
   constructor(private userRepository: IUserRepository) {}
@@ -20,7 +20,7 @@ export class CountUsers {
   private validate = (params: CountUserParams) => {
     const CountParams = object({
       where: object({
-        role: nativeEnum(UserRole).optional(),
+        role: nativeEnum(Role).optional(),
       }).optional(),
     })
 

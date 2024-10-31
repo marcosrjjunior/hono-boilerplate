@@ -1,7 +1,7 @@
 import { Hono } from 'hono'
 
-import CountUsers from '../app/cases/users/countUsers'
-import UserRepository from '../app/repositories/UserRepository'
+import CountUsers from '@/app/cases/users/countUsers'
+import UserRepository from '@/app/repositories/UserRepository'
 
 const users = new Hono()
 
