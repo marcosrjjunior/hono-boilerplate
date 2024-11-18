@@ -1,11 +1,10 @@
-import { db } from '@/lib/db'
-
 import {
   CountUserParams,
   CountUsersResponse,
   IUserRepository,
 } from './interfaces/IUserRepository'
 import { Role } from '../models'
+import { db } from '../../lib/db'
 
 class UserRepository implements IUserRepository {
   count = async ({ where }: CountUserParams): Promise<CountUsersResponse> => {

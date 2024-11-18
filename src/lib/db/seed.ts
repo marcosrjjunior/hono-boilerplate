@@ -1,5 +1,5 @@
 import { db } from '.'
-import { Role } from '@/app/models'
+import { Role } from '../../app/models'
 
 async function main() {
   await db

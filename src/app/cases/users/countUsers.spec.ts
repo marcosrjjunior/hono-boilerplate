@@ -1,9 +1,8 @@
 import { describe, it, expect, spyOn } from 'bun:test'
 
-import MockUserRepository from '@/app/repositories/mock/MockUserRepository'
-import { Role } from '@/app/models'
-
 import CountUsers from './countUsers'
+import MockUserRepository from '../../repositories/mock/MockUserRepository'
+import { Role } from '../../models'
 
 const mockRepo = new MockUserRepository()
 const useCase = new CountUsers(mockRepo)

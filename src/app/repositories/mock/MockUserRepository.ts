@@ -1,4 +1,4 @@
-import { UsersId } from '@/lib/db/schema/public/Users'
+import { UsersId } from '../../../lib/db/schema/public/Users'
 import {
   CountUsersResponse,
   IUserRepository,

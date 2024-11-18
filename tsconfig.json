@@ -15,10 +15,6 @@
     "noUnusedParameters": true,
 
     // Nodejs constumisation
-    "outDir": "./dist",
-
-    "paths": {
-      "@/*": ["./src/*"]
-    }
+    "outDir": "./dist"
   }
 }

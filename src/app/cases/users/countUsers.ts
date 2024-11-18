@@ -4,7 +4,7 @@ import { Role } from '../../models'
 import {
   CountUserParams,
   IUserRepository,
-} from '@/app/repositories/interfaces/IUserRepository'
+} from '../../repositories/interfaces/IUserRepository'
 
 export class CountUsers {
   constructor(private userRepository: IUserRepository) {}

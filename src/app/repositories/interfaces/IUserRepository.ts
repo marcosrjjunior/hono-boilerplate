@@ -1,4 +1,4 @@
-import { Role } from '@/app/models'
+import { Role } from '../../models'
 
 /**
  * @interface UserRepository
