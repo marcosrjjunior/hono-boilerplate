@@ -32,7 +32,6 @@ app.onError((error, c) => {
 })
 
 app.notFound(c => {
-  console.error(`not found${c}`)
   return c.text('404 Not found', 404)
 })
 
