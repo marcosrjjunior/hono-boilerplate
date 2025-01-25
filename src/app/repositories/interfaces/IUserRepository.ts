@@ -3,8 +3,8 @@ import { Role } from '../../models'
 /**
  * @interface UserRepository
  **/
-export type CountUserParams = {
-  where: {
+export type CountUsersParams = {
+  where?: {
     role?: Role
   }
 }
@@ -14,5 +14,5 @@ export type CountUsersResponse = {
 }
 
 export type IUserRepository = {
-  count(params: CountUserParams): Promise<CountUsersResponse>
+  count(params: CountUsersParams): Promise<CountUsersResponse>
 }

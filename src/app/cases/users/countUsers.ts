@@ -1,30 +1,23 @@
-import { object, nativeEnum } from 'zod'
-
 import { Role } from '../../models'
-import {
-  CountUserParams,
-  IUserRepository,
-} from '../../repositories/interfaces/IUserRepository'
+import { IUserRepository } from '../../repositories/interfaces/IUserRepository'
+
+type CountUsersRequest = {
+  where?: {
+    role?: Role
+  }
+}
+
+type CountUsersResponse = {
+  count: number
+}
 
 export class CountUsers {
   constructor(private userRepository: IUserRepository) {}
 
-  execute = async (params: CountUserParams) => {
-    this.validate(params)
-
+  execute = async (params: CountUsersRequest): Promise<CountUsersResponse> => {
     const response = await this.userRepository.count(params)
 
     return response
-  }
-
-  private validate = (params: CountUserParams) => {
-    const CountParams = object({
-      where: object({
-        role: nativeEnum(Role).optional(),
-      }).optional(),
-    })
-
-    CountParams.parse(params)
   }
 }
 
