@@ -83,7 +83,8 @@ pnpm install
 <summary>Bun</summary>
 
 ```sh
-bun install
+bun install --lockfile-only
+# Reference: https://bun.sh/docs/install/lockfile
 ```
 
 </details>
@@ -164,6 +165,11 @@ This will generate a new file under `/lib/db/migrations/DATE-initial.ts`
 
 This project is using kanel to generate types, it handles better types and enums when using with postgres.  
 If you need to use a different database, I recommend [kysely-codegen](https://github.com/RobinBlomberg/kysely-codegen) instead.
+
+## Endpoints
+
+The endpoints are documented in the project under the "/endpoints" directory.  
+To run an access you will need [Bruno API Client](https://www.usebruno.com)
 
 ## Run test
 

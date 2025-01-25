@@ -1,0 +1,23 @@
+meta {
+  name: count
+  type: http
+  seq: 3
+}
+
+post {
+  url: {{host}}/users/count
+  body: json
+  auth: none
+}
+
+headers {
+  Content-Type: application/json
+}
+
+body:json {
+  {
+    "where": {
+      "role": "ADMIN"
+    }
+  }
+}

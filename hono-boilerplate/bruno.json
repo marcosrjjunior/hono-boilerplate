@@ -1,0 +1,15 @@
+{
+  "version": "1",
+  "name": "hono-boilerplate",
+  "type": "collection",
+  "ignore": [
+    "node_modules",
+    ".git"
+  ],
+  "scripts": {
+    "moduleWhitelist": ["form-data"],
+    "filesystemAccess": {
+      "allow": true
+    }
+  }
+}
