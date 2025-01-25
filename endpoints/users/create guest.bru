@@ -1,0 +1,23 @@
+meta {
+  name: create guest
+  type: http
+  seq: 3
+}
+
+post {
+  url: {{host}}/users
+  body: json
+  auth: none
+}
+
+headers {
+  Content-Type: application/json
+}
+
+body:json {
+  {
+    "name": "User 1",
+    "email": "user@email.com",
+    "role": "GUEST"
+  }
+}

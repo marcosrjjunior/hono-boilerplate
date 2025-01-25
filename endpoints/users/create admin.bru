@@ -1,0 +1,24 @@
+meta {
+  name: create admin
+  type: http
+  seq: 2
+}
+
+post {
+  url: {{host}}/users
+  body: json
+  auth: none
+}
+
+headers {
+  Content-Type: application/json
+}
+
+body:json {
+  {
+    "name": "User 1",
+    "email": "user@email.com",
+    "role": "ADMIN",
+    "mobile_phone_number": "+611111111"
+  }
+}

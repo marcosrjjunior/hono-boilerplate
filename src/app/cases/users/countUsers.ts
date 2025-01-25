@@ -1,7 +1,7 @@
 import { Role } from '../../models'
 import { IUserRepository } from '../../repositories/interfaces/IUserRepository'
 
-type CountUsersRequest = {
+type CountUsersParams = {
   where?: {
     role?: Role
   }
@@ -14,7 +14,7 @@ type CountUsersResponse = {
 export class CountUsers {
   constructor(private userRepository: IUserRepository) {}
 
-  execute = async (params: CountUsersRequest): Promise<CountUsersResponse> => {
+  execute = async (params: CountUsersParams): Promise<CountUsersResponse> => {
     const response = await this.userRepository.count(params)
 
     return response
