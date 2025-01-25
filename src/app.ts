@@ -1,7 +1,7 @@
 import { Hono } from 'hono'
 // import { csrf } from 'hono/csrf'
 
-import { ZodError } from 'zod'
+import { ZodError, ZodIssue } from 'zod'
 
 import { routes } from './routes'
 
@@ -21,10 +21,15 @@ app.onError((error, c) => {
   // })
 
   if (error instanceof ZodError) {
-    return c.json({ error, message: error.message }, { status: 403 })
+    const errors = error.flatten((issue: ZodIssue) => ({
+      message: issue.message,
+      errorCode: issue.code,
+    }))
+
+    return c.json({ error: errors, message: 'ZodError' }, 400)
   }
 
-  console.error(`${error}`)
+  console.error(error)
   return c.json(
     { error, message: error.message || 'Custom Error Message' },
     500,
