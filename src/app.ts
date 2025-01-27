@@ -21,12 +21,25 @@ app.onError((error, c) => {
   // })
 
   if (error instanceof ZodError) {
-    const errors = error.flatten((issue: ZodIssue) => ({
-      message: issue.message,
-      errorCode: issue.code,
-    }))
+    const errors = error.errors.map(err => {
+      if (err?.['unionErrors']) {
+        return err['unionErrors'].flatMap(unionErr =>
+          unionErr.issues.map((issue: ZodIssue) => ({
+            message: issue.message,
+            errorCode: issue.code,
+            path: issue.path,
+          })),
+        )
+      }
 
-    return c.json({ error: errors, message: 'ZodError' }, 400)
+      return {
+        message: err.message,
+        errorCode: err.code,
+        path: err.path,
+      }
+    })
+
+    return c.json({ error: errors.flat(), message: 'ZodError' }, 400)
   }
 
   console.error(error)
