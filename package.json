@@ -25,25 +25,25 @@
   },
   "dependencies": {
     "@hono/node-server": "^1.13.8",
-    "hono": "^4.7.2",
-    "kysely": "^0.27.5",
+    "hono": "^4.7.4",
+    "kysely": "^0.27.6",
     "kysely-migration-cli": "^0.4.2",
     "pg": "^8.13.3",
     "zod": "^3.24.2"
   },
   "devDependencies": {
-    "@types/bun": "^1.2.3",
+    "@types/bun": "^1.2.4",
     "@types/pg": "^8.11.11",
     "dotenv": "^16.4.7",
     "eslint": "^9.21.0",
-    "eslint-config-prettier": "^10.0.1",
+    "eslint-config-prettier": "^10.0.2",
     "eslint-plugin-prettier": "^5.2.3",
     "eslint-plugin-unused-imports": "^4.1.4",
     "kanel": "^3.11.1",
     "kanel-kysely": "^0.6.1",
-    "prettier": "^3.5.2",
+    "prettier": "^3.5.3",
     "tsx": "^4.19.3",
-    "typescript": "^5.7.3",
-    "typescript-eslint": "^8.25.0"
+    "typescript": "^5.8.2",
+    "typescript-eslint": "^8.26.0"
   }
 }
