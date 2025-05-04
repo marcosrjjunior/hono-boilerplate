@@ -4,7 +4,9 @@
 import type { ColumnType, Selectable, Insertable, Updateable } from 'kysely'
 
 /** Identifier type for public.kysely_migration */
-export type KyselyMigrationName = string & { __brand: 'KyselyMigrationName' }
+export type KyselyMigrationName = string & {
+  __brand: 'public.kysely_migration'
+}
 
 /** Represents the table public.kysely_migration */
 export default interface KyselyMigrationTable {

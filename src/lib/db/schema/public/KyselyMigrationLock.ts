@@ -5,7 +5,7 @@ import type { ColumnType, Selectable, Insertable, Updateable } from 'kysely'
 
 /** Identifier type for public.kysely_migration_lock */
 export type KyselyMigrationLockId = string & {
-  __brand: 'KyselyMigrationLockId'
+  __brand: 'public.kysely_migration_lock'
 }
 
 /** Represents the table public.kysely_migration_lock */

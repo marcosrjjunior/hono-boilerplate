@@ -4,7 +4,7 @@
 import type { ColumnType, Selectable, Insertable, Updateable } from 'kysely'
 
 /** Identifier type for public.users */
-export type UsersId = string & { __brand: 'UsersId' }
+export type UsersId = string & { __brand: 'public.users' }
 
 /** Represents the table public.users */
 export default interface UsersTable {
