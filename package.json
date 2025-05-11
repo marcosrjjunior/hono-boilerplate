@@ -40,7 +40,7 @@
     "eslint-config-prettier": "^10.1.5",
     "eslint-plugin-prettier": "^5.4.0",
     "eslint-plugin-unused-imports": "^4.1.4",
-    "kysely-codegen": "^0.18.3",
+    "kysely-codegen": "^0.18.4",
     "prettier": "^3.5.3",
     "tsx": "^4.19.4",
     "typescript": "^5.8.3",
