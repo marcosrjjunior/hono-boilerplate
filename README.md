@@ -163,8 +163,12 @@ This will generate a new file under `/lib/db/migrations/DATE-initial.ts`
 
 ##### DB types
 
-This project is using kanel to generate types, it handles better types and enums when using with postgres.  
-If you need to use a different database, I recommend [kysely-codegen](https://github.com/RobinBlomberg/kysely-codegen) instead.
+This project uses [kysely-codegen](https://github.com/RobinBlomberg/kysely-codegen).
+After running the migration you can re-generate the types using
+
+```sh
+pnpm db:generate:types
+```
 
 ## Endpoints
 

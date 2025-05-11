@@ -1,4 +1,3 @@
-import { UsersId } from '../../../lib/db/schema/public/Users'
 import { Role } from '../../models'
 
 /**
@@ -12,7 +11,7 @@ export type CreateUserParams = {
 }
 
 export type CreateUserResponse = {
-  id: UsersId
+  id: string
 }
 
 export type CountUsersParams = {

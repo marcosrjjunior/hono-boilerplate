@@ -1,4 +1,3 @@
-import { UsersId } from '../../../lib/db/schema/public/Users'
 import {
   CreateUserResponse,
   CountUsersResponse,
@@ -6,7 +5,7 @@ import {
 } from '../interfaces/IUserRepository'
 
 export const createUserResponse = {
-  id: 'ce3c8cad-ae9d-4f46-b2c2-1440bdac16b7' as UsersId,
+  id: 'ce3c8cad-ae9d-4f46-b2c2-1440bdac16b7',
 }
 
 export class MockUserRepository implements IUserRepository {

@@ -3,6 +3,11 @@ import { Kysely, sql } from 'kysely'
 import { softDelete, withTimestamps } from '../utils'
 
 export async function up(db: Kysely<any>): Promise<void> {
+  /**
+   * I prefer using the string for this to avoid issues to update enums later on,
+   * but here is an example of how to use it.
+   *  The UserRole enum will also be available inside of the src/lib/db/schema.d.ts
+   */
   // await db.schema
   //   .createType('user_role')
   //   .asEnum(['SUPPORT', 'SALES', 'CS'])
@@ -19,6 +24,7 @@ export async function up(db: Kysely<any>): Promise<void> {
     .addColumn('image', 'text')
     .addColumn('mobile_phone_number', 'varchar')
     .addColumn('role', 'varchar', col => col.notNull())
+    // .addColumn('role', sql`user_role`)
     .$call(withTimestamps)
     .$call(softDelete)
     .execute()

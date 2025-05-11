@@ -1,4 +1,3 @@
-import { UsersId } from '../../../lib/db/schema/public/Users'
 import { Role } from '../../models'
 import { IUserRepository } from '../../repositories/interfaces/IUserRepository'
 
@@ -10,7 +9,7 @@ type CreateUserParams = {
 }
 
 export type CreateUserResponse = {
-  id: UsersId
+  id: string
 }
 
 export const CreateUser = (userRepository: IUserRepository) => {
