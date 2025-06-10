@@ -1,9 +1,8 @@
 import { Hono } from 'hono'
 // import { csrf } from 'hono/csrf'
 
-import { ZodError, ZodIssue } from 'zod'
-
 import { routes } from './routes'
+import { z } from 'zod/v4'
 
 const app = new Hono()
 
@@ -20,26 +19,10 @@ app.onError((error, c) => {
   //   },
   // })
 
-  if (error instanceof ZodError) {
-    const errors = error.errors.map(err => {
-      if (err?.['unionErrors']) {
-        return err['unionErrors'].flatMap(unionErr =>
-          unionErr.issues.map((issue: ZodIssue) => ({
-            message: issue.message,
-            errorCode: issue.code,
-            path: issue.path,
-          })),
-        )
-      }
+  if (error instanceof z.ZodError) {
+    const errors = z.flattenError(error)
 
-      return {
-        message: err.message,
-        errorCode: err.code,
-        path: err.path,
-      }
-    })
-
-    return c.json({ error: errors.flat(), message: 'ZodError' }, 400)
+    return c.json({ error: errors, message: 'ZodError' }, 400)
   }
 
   console.error(error)

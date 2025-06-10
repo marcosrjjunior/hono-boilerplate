@@ -1,33 +1,45 @@
 import { Hono } from 'hono'
 import CountUsers from '../app/cases/users/countUsers'
 import UserRepository from '../app/repositories/UserRepository'
-import { intersection, nativeEnum, object, string, any } from 'zod'
+import { z } from 'zod/v4'
+
 import { Role } from '../app/models'
 import CreateUser from '../app/cases/users/createUser'
 
-const CountUserSchemaInput = object({
-  where: object({
-    role: nativeEnum(Role).optional(),
-  }).optional(),
+/**
+ * The validation schemas here could be moved somehwere else,
+ * or just leave with the route.
+ * You can find another example using the standard schema here:
+ * https://github.com/honojs/middleware/tree/main/packages/standard-validator#usage
+ */
+const CountUserSchemaInput = z.object({
+  where: z
+    .object({
+      role: z.enum(Role).optional(),
+    })
+    .optional(),
 })
 
 const CreateUserSchemaInput = (role: Role) => {
   // This is just an example of how you can manage requests
   // that require fields depending on the payload
-  const AdminUserSchema = object({
-    mobile_phone_number: string().refine(value =>
-      /^[+]{1}(?:[0-9-()/.]\s?){6,15}[0-9]{1}$/.test(value),
-    ),
+  const phoneRule = z
+    .string()
+    .refine(value => /^[+]{1}(?:[0-9-()/.]\s?){6,15}[0-9]{1}$/.test(value))
+
+  const AdminUserSchema = z.object({
+    mobile_phone_number: phoneRule,
   })
 
-  const schema = intersection(
-    object({
-      name: string().trim().min(1),
-      email: string(),
-      role: nativeEnum(Role),
+  const schema = z.intersection(
+    z.object({
+      name: z.string().trim().min(1),
+      email: z.string(),
+      role: z.enum(Role),
+      mobile_phone_number: phoneRule.nullish(),
     }),
 
-    (role === Role.ADMIN && AdminUserSchema) || any(),
+    (role === Role.ADMIN && AdminUserSchema) || z.any(),
   )
 
   return schema
