@@ -28,5 +28,22 @@ jobs:
       - name: Run lint
         run: pnpm lint
 
-      - name: Run tests
+      - name: Run unit tests
         run: pnpm test
+
+      - name: Setup database
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y postgresql-client
+
+          until pg_isready -h localhost -p 5432 -U postgres; do
+            echo "Waiting for Pg..."
+            sleep 2
+          done
+
+          PGPASSWORD=postgres psql -h localhost -p 5432 -U postgres -d local_db -c "CREATE EXTENSION fuzzystrmatch;"
+
+      - name: Run integration tests
+        env:
+          DATABASE_URL: postgres://postgres:postgres@localhost:5432/local_db
+        run: pnpm test:integration
