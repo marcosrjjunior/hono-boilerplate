@@ -16,17 +16,18 @@ Boilerplate for your typescript projects using [Hono](https://hono.dev).
 
 The main implementation is inside of the `/app` directory where it uses basic ts node implementation.
 
-/src  
-├── <span style="color:lightgreen">/app</span> : main implementation  
-│ ├── <span style="color:white">/cases</span>  
-│ └── <span style="color:white">/repositories</span>  
-├── <span style="color:white">/lib</span>  
-│ └── <span style="color:white">/db</span> : migrations, seed, types  
-├── <span style="color:white">/routes</span>  
-├── <span style="color:white">/tests</span> : integration tests  
-│  
-├── <span style="color:lightgreen">node.ts</span> : run with Node  
-└── <span style="color:lightgreen">bun.ts</span> : run with Bun
+```bash
+/src
+
+/app/cases: Use cases of your application
+/app/repositories: Repositories and interfaces used by the use cases
+/lib/db: Database structure: migrations, seed, types
+/routes: Routes and middlewares
+/tests: Integration tests
+
+node.ts: Initial file to run the project using Node
+bun.ts: Initial file to run the project using Bun
+```
 
 ## Tech Stack
 
