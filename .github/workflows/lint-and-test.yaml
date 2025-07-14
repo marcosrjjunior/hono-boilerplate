@@ -10,6 +10,22 @@ on:
 jobs:
   lint_and_test:
     runs-on: ubuntu-latest
+
+    services:
+      postgres:
+        image: bitnami/postgresql:latest
+        env:
+          POSTGRESQL_USERNAME: postgres
+          POSTGRES_PASSWORD: postgres
+          POSTGRESQL_DATABASE: local_db
+        options: >-
+          --health-cmd "pg_isready -U postgres"
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
+        ports:
+          - 5432:5432
+
     steps:
       - name: Checkout repo
         uses: actions/checkout@v4
