@@ -60,9 +60,6 @@ jobs:
             sleep 2
           done
 
-      - name: Create test database and extension
-        run: |
-          PGPASSWORD=secret psql -h localhost -U postgres -d postgres -c "CREATE DATABASE project;"
           PGPASSWORD=secret psql -h localhost -U postgres -d project  -c "CREATE EXTENSION fuzzystrmatch;"
 
       - name: Run db:migration
