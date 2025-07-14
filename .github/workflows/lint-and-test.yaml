@@ -44,26 +44,26 @@ jobs:
       - name: Install dependencies 📦
         uses: ./.github/actions/pnpm-install
 
-      - name: Run lint
+      - name: Run lint ✅
         run: pnpm lint
 
-      - name: Run unit tests
+      - name: Run unit tests ✅
         run: pnpm test
 
-      - name: Setup database
-        run: |
-          sudo apt-get update
-          sudo apt-get install -y postgresql-client
+      # - name: Setup database
+      #   run: |
+      #     sudo apt-get update
+      #     sudo apt-get install -y postgresql-client
 
-          until pg_isready -h localhost -p 5432 -U postgres; do
-            echo "Waiting for Pg..."
-            sleep 2
-          done
+      #     until pg_isready -h localhost -p 5432 -U postgres; do
+      #       echo "Waiting for Pg..."
+      #       sleep 2
+      #     done
 
-          PGPASSWORD=secret psql -h localhost -U postgres -d project  -c "CREATE EXTENSION fuzzystrmatch;"
+      #     PGPASSWORD=secret psql -h localhost -U postgres -d project  -c "CREATE EXTENSION fuzzystrmatch;"
 
-      - name: Run db:migration
+      - name: Run db:migration 🆙
         run: pnpm db:migrate:up
 
-      - name: Run integration tests
+      - name: Run integration tests ✅
         run: pnpm test:integration

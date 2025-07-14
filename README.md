@@ -180,8 +180,13 @@ To run an access you will need [Bruno API Client](https://www.usebruno.com)
 Tests are implemented using bun which follows a jest-compatible structure.
 
 ```sh
+# unit tests
 pnpm test
+
+pnpm test:integration
 ```
+
+Tests also run on pull requests and push to main, check `.github/workflows/lint-and-test.yaml`
 
 > Reference: https://bun.sh/docs/cli/test#run-tests
 
