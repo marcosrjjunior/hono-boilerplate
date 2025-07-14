@@ -9,7 +9,8 @@
     "node:dev": "dotenvx run --  tsx watch src/node.ts",
     "node:build": "tsc -p .",
     "node:start": "node ./dist/node.js",
-    "test": "bun test",
+    "test": "bun test ./src/app",
+    "test:integration": "bun test --preload ./src/tests/setup.ts ./src/tests",
     "db:migrate:up": "dotenvx run -- tsx ./src/lib/db/migrate latest",
     "db:migrate:down": "dotenvx run -- tsx ./src/lib/db/migrate down",
     "db:migrate:redo": "dotenvx run -- tsx ./src/lib/db/migrate down-to NO_MIGRATIONS && pnpm db:migrate:up && pnpm db:generate:types",
@@ -24,19 +25,19 @@
     "prettier": "prettier --write ./src"
   },
   "dependencies": {
-    "@dotenvx/dotenvx": "^1.45.2",
-    "@hono/node-server": "^1.15.0",
-    "hono": "^4.8.4",
+    "@dotenvx/dotenvx": "^1.47.5",
+    "@hono/node-server": "^1.16.0",
+    "hono": "^4.8.5",
     "kysely": "^0.28.2",
     "kysely-migration-cli": "^0.4.2",
     "pg": "^8.16.3",
-    "zod": "^3.25.74"
+    "zod": "^4.0.5"
   },
   "devDependencies": {
-    "@eslint/js": "^9.30.1",
+    "@eslint/js": "^9.31.0",
     "@types/bun": "^1.2.18",
     "@types/pg": "^8.15.4",
-    "eslint": "^9.30.1",
+    "eslint": "^9.31.0",
     "eslint-config-prettier": "^10.1.5",
     "eslint-plugin-prettier": "^5.5.1",
     "eslint-plugin-unused-imports": "^4.1.4",
@@ -44,6 +45,6 @@
     "prettier": "^3.6.2",
     "tsx": "^4.20.3",
     "typescript": "^5.8.3",
-    "typescript-eslint": "^8.35.1"
+    "typescript-eslint": "^8.36.0"
   }
 }
