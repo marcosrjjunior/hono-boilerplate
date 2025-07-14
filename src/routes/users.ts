@@ -6,45 +6,6 @@ import { z } from 'zod/v4'
 import { Role } from '../app/models'
 import CreateUser from '../app/cases/users/createUser'
 
-/**
- * The validation schemas here could be moved somehwere else,
- * or just leave with the route.
- * You can find another example using the standard schema here:
- * https://github.com/honojs/middleware/tree/main/packages/standard-validator#usage
- */
-const CountUserSchemaInput = z.object({
-  where: z
-    .object({
-      role: z.enum(Role).optional(),
-    })
-    .optional(),
-})
-
-const CreateUserSchemaInput = (role: Role) => {
-  // This is just an example of how you can manage requests
-  // that require fields depending on the payload
-  const phoneRule = z
-    .string()
-    .refine(value => /^[+]{1}(?:[0-9-()/.]\s?){6,15}[0-9]{1}$/.test(value))
-
-  const AdminUserSchema = z.object({
-    mobile_phone_number: phoneRule,
-  })
-
-  const schema = z.intersection(
-    z.object({
-      name: z.string().trim().min(1),
-      email: z.string(),
-      role: z.enum(Role),
-      mobile_phone_number: phoneRule.nullish(),
-    }),
-
-    (role === Role.ADMIN && AdminUserSchema) || z.any(),
-  )
-
-  return schema
-}
-
 const users = new Hono()
 
 users.post('/', async c => {
@@ -86,5 +47,44 @@ users.get('/:id', c => {
   const id = c.req.param('id')
   return c.text('Get user: ' + id)
 })
+
+/**
+ * The validation schemas here could be moved somehwere else,
+ * or just leave with the route.
+ * You can find another example using the standard schema here:
+ * https://github.com/honojs/middleware/tree/main/packages/standard-validator#usage
+ */
+const CountUserSchemaInput = z.strictObject({
+  where: z
+    .strictObject({
+      role: z.enum(Role).optional(),
+    })
+    .optional(),
+})
+
+const CreateUserSchemaInput = (role: Role) => {
+  // This is just an example of how you can manage requests
+  // that require fields depending on the payload
+  const phoneRule = z
+    .string()
+    .refine(value => /^[+]{1}(?:[0-9-()/.]\s?){6,15}[0-9]{1}$/.test(value))
+
+  const AdminUserSchema = z.object({
+    mobile_phone_number: phoneRule,
+  })
+
+  const schema = z.intersection(
+    z.strictObject({
+      name: z.string().trim().min(1),
+      email: z.string(),
+      role: z.enum(Role),
+      mobile_phone_number: phoneRule.nullish(),
+    }),
+
+    (role === Role.ADMIN && AdminUserSchema) || z.any(),
+  )
+
+  return schema
+}
 
 export default users
