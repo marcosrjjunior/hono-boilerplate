@@ -10,6 +10,25 @@ on:
 jobs:
   lint_and_test:
     runs-on: ubuntu-latest
+
+    services:
+      postgres:
+        image: postgres:latest
+        env:
+          POSTGRES_USER: postgres
+          POSTGRES_PASSWORD: secret
+          POSTGRES_DB: project
+        options: >-
+          --health-cmd "pg_isready -U postgres"
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
+        ports:
+          - 5432:5432
+
+    env:
+      DATABASE_URL: postgresql://postgres:secret@localhost:5432/project
+
     steps:
       - name: Checkout repo
         uses: actions/checkout@v4
@@ -25,8 +44,26 @@ jobs:
       - name: Install dependencies 📦
         uses: ./.github/actions/pnpm-install
 
-      - name: Run lint
+      - name: Run lint ✅
         run: pnpm lint
 
-      - name: Run tests
+      - name: Run unit tests ✅
         run: pnpm test
+
+      # - name: Setup database
+      #   run: |
+      #     sudo apt-get update
+      #     sudo apt-get install -y postgresql-client
+
+      #     until pg_isready -h localhost -p 5432 -U postgres; do
+      #       echo "Waiting for Pg..."
+      #       sleep 2
+      #     done
+
+      #     PGPASSWORD=secret psql -h localhost -U postgres -d project  -c "CREATE EXTENSION fuzzystrmatch;"
+
+      - name: Run db:migration 🆙
+        run: pnpm db:migrate:up
+
+      - name: Run integration tests ✅
+        run: pnpm test:integration
