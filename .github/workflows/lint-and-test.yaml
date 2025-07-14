@@ -13,11 +13,11 @@ jobs:
 
     services:
       postgres:
-        image: bitnami/postgresql:latest
+        image: postgres:latest
         env:
-          POSTGRESQL_USERNAME: postgres
+          POSTGRES_USER: postgres
           POSTGRES_PASSWORD: postgres
-          POSTGRESQL_DATABASE: local_db
+          POSTGRES_DB: project
         options: >-
           --health-cmd "pg_isready -U postgres"
           --health-interval 10s
@@ -57,9 +57,9 @@ jobs:
             sleep 2
           done
 
-          PGPASSWORD=postgres psql -h localhost -p 5432 -U postgres -d local_db -c "CREATE EXTENSION fuzzystrmatch;"
+          PGPASSWORD=postgres psql -h localhost -p 5432 -U postgres -d project -c "CREATE EXTENSION fuzzystrmatch;"
 
       - name: Run integration tests
         env:
-          DATABASE_URL: postgres://postgres:postgres@localhost:5432/local_db
+          DATABASE_URL: postgresql://postgres:secret@localhost:5432/project
         run: pnpm test:integration
