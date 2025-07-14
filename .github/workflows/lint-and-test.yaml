@@ -60,7 +60,7 @@ jobs:
             sleep 2
           done
 
-          PGPASSWORD=postgres psql -h localhost -p 5432 -U postgres -d project -c "CREATE EXTENSION fuzzystrmatch;"
+          PGPASSWORD=secret psql -h localhost -p 5432 -U postgres -d project -c "CREATE EXTENSION fuzzystrmatch;"
 
       - name: Run integration tests
         run: pnpm test:integration
