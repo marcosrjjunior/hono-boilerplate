@@ -25,26 +25,26 @@
     "prettier": "prettier --write ./src"
   },
   "dependencies": {
-    "@dotenvx/dotenvx": "^1.47.5",
-    "@hono/node-server": "^1.16.0",
-    "hono": "^4.8.5",
-    "kysely": "^0.28.2",
+    "@dotenvx/dotenvx": "^1.48.4",
+    "@hono/node-server": "^1.18.1",
+    "hono": "^4.8.12",
+    "kysely": "^0.28.4",
     "kysely-migration-cli": "^0.4.2",
     "pg": "^8.16.3",
-    "zod": "^4.0.5"
+    "zod": "^4.0.14"
   },
   "devDependencies": {
-    "@eslint/js": "^9.31.0",
-    "@types/bun": "^1.2.18",
-    "@types/pg": "^8.15.4",
-    "eslint": "^9.31.0",
-    "eslint-config-prettier": "^10.1.5",
-    "eslint-plugin-prettier": "^5.5.1",
+    "@eslint/js": "^9.32.0",
+    "@types/bun": "^1.2.19",
+    "@types/pg": "^8.15.5",
+    "eslint": "^9.32.0",
+    "eslint-config-prettier": "^10.1.8",
+    "eslint-plugin-prettier": "^5.5.3",
     "eslint-plugin-unused-imports": "^4.1.4",
     "kysely-codegen": "^0.18.5",
     "prettier": "^3.6.2",
     "tsx": "^4.20.3",
-    "typescript": "^5.8.3",
-    "typescript-eslint": "^8.36.0"
+    "typescript": "^5.9.2",
+    "typescript-eslint": "^8.38.0"
   }
 }

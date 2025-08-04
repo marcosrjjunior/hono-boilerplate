@@ -19,14 +19,14 @@ The main implementation is inside of the `/app` directory where it uses basic ts
 ```bash
 /src
 
-/app/cases: Use cases of your application
-/app/repositories: Repositories and interfaces used by the use cases
-/lib/db: Database structure: migrations, seed, types
-/routes: Routes and middlewares
-/tests: Integration tests
+/app/cases: # Use cases of your application
+/app/repositories: # Repositories and interfaces used by the use cases
+/lib/db: # Database structure: migrations, seed, types
+/routes: # Routes and middlewares
+/tests:  # Integration tests
 
-node.ts: Initial file to run the project using Node
-bun.ts: Initial file to run the project using Bun
+node.ts: # Initial file to run the project using Node
+bun.ts:  # Initial file to run the project using Bun
 ```
 
 ## Tech Stack
