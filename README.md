@@ -176,7 +176,10 @@ pnpm db:generate:types
 ## Endpoints
 
 The endpoints are documented in the project under the "/endpoints" directory.  
-To run an access you will need [Bruno API Client](https://www.usebruno.com)
+To run an access you can use the client or the extension.
+
+- [Bruno API Client](https://www.usebruno.com).
+- [VSCode Extension](https://marketplace.visualstudio.com/items?itemName=bruno-api-client.bruno)
 
 ## Run test
 
@@ -192,6 +195,30 @@ pnpm test:integration
 Tests also run on pull requests and push to main, check `.github/workflows/lint-and-test.yaml`
 
 > Reference: https://bun.sh/docs/cli/test#run-tests
+
+## Build
+
+<details>
+
+<summary>Nodejs</summary>
+
+```sh
+pnpm node:build
+pnpm node:start
+```
+
+</details>
+
+<details>
+
+<summary>Bun</summary>
+
+```sh
+pnpm bun:build
+pnpm bun:start
+```
+
+</details>
 
 ## FAQ
 

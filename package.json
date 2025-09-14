@@ -6,6 +6,7 @@
   "scripts": {
     "bun:build": "bun build src/bun.ts --compile --minify --target bun --outfile api",
     "bun:dev": "bun run --hot src/bun.ts",
+    "bun:start": "./api",
     "dev": "pnpm node:dev",
     "node:dev": "dotenvx run --  tsx watch src/node.ts",
     "node:build": "tsc -p .",
