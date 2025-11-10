@@ -1,14 +1,9 @@
-import { Hono } from 'hono'
 // import { csrf } from 'hono/csrf'
 
-import { routes } from './routes'
+import app from './routes'
 import { z } from 'zod/v4'
 
-const app = new Hono()
-
 // app.use('*', csrf({ origin: 'localhost' }))
-
-routes(app)
 
 app.onError((error, c) => {
   // Log error (Sentry, ....)

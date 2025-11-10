@@ -2,51 +2,46 @@ import { Hono } from 'hono'
 import CountUsers from '../app/cases/users/countUsers'
 import UserRepository from '../app/repositories/UserRepository'
 import { z } from 'zod/v4'
-
 import { Role } from '../app/models'
 import CreateUser from '../app/cases/users/createUser'
 
 const users = new Hono()
+  .post('/', async c => {
+    const data = await c.req.json()
 
-users.post('/', async c => {
-  const data = await c.req.json()
+    const { name, email, role, mobile_phone_number } = CreateUserSchemaInput(
+      data.role as Role,
+    ).parse(data)
 
-  const { name, email, role, mobile_phone_number } = CreateUserSchemaInput(
-    data.role as Role,
-  ).parse(data)
+    // example using function
+    const createUser = CreateUser(new UserRepository())
 
-  // example using function
-  const createUser = CreateUser(new UserRepository())
+    const response = await createUser.execute({
+      name,
+      email,
+      role,
+      mobile_phone_number,
+    })
 
-  const response = await createUser.execute({
-    name,
-    email,
-    role,
-    mobile_phone_number,
+    return c.json(response, 200)
   })
+  .post('/count', async c => {
+    const { where } = CountUserSchemaInput.parse(await c.req.json())
 
-  return c.json(response, 200)
-})
+    const countUsers = new CountUsers(new UserRepository())
 
-users.post('/count', async c => {
-  const { where } = CountUserSchemaInput.parse(await c.req.json())
+    const response = await countUsers.execute({
+      where,
+    })
 
-  const countUsers = new CountUsers(new UserRepository())
-
-  const response = await countUsers.execute({
-    where,
+    return c.json(response, 200)
   })
-
-  return c.json(response, 200)
-})
-
-users.get('/', c => c.text('List users')) // GET /user
-
-users.get('/:id', c => {
-  // GET /user
-  const id = c.req.param('id')
-  return c.text('Get user: ' + id)
-})
+  .get('/', c => c.text('List users'))
+  .get('/:id', c => {
+    // GET /user
+    const id = c.req.param('id')
+    return c.text('Get user: ' + id)
+  })
 
 /**
  * The validation schemas here could be moved somehwere else,
