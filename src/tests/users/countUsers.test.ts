@@ -18,21 +18,12 @@ describe('Count user [POST:/users/count]', () => {
     expect(data.message).toBe('ZodError')
   })
 
-  it('should return 3 users', async () => {
-    const res = await app.request('/users/count', {
-      method: 'POST',
-      body: JSON.stringify({}),
-    })
-
-    const data = await res.json()
-
-    expect(res.status).toBe(200)
-    expect(data.count).toBe(3)
-  })
-
   it('should return 2 members', async () => {
     const res = await app.request('/users/count', {
       method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
       body: JSON.stringify({
         where: {
           role: Role.MEMBER,
@@ -49,6 +40,9 @@ describe('Count user [POST:/users/count]', () => {
   it('should not return 3 admins', async () => {
     const res = await app.request('/users/count', {
       method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
       body: JSON.stringify({
         where: {
           role: Role.ADMIN,

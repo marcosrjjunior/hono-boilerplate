@@ -10,6 +10,9 @@ describe('Create user [POST:/users]', () => {
   it('should fail with invalid params', async () => {
     const res = await app.request('/users', {
       method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
       body: JSON.stringify({
         invalid: 'invalid',
       }),
@@ -62,6 +65,9 @@ describe('Create user [POST:/users]', () => {
 
       const res = await app.request('/users', {
         method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
         body: JSON.stringify(payload),
       })
 
@@ -75,6 +81,9 @@ describe('Create user [POST:/users]', () => {
   it('should create an admin', async () => {
     const res = await app.request('/users', {
       method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
       body: JSON.stringify({
         name: 'name',
         email: 'name@email.com',
@@ -93,6 +102,9 @@ describe('Create user [POST:/users]', () => {
   it('should create a member', async () => {
     const res = await app.request('/users', {
       method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
       body: JSON.stringify({
         name: 'name',
         email: 'member@email.com',
