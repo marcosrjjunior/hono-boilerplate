@@ -54,22 +54,4 @@ app.get(
   }),
 )
 
-const test = async () => {
-  const res = await app.request('/users/count', {
-    method: 'POST',
-    // headers: {
-    //   'Content-Type': 'application/json',
-    // },
-    body: JSON.stringify({
-      where: { role: 'ADMIn' },
-    }),
-  })
-
-  const data = await res.json()
-
-  console.log('dataaa', data)
-}
-
-test()
-
 export { app }

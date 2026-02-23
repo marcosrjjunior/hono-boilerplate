@@ -33,7 +33,8 @@ bun.ts:  # Initial file to run the project using Bun
 
 **Geral:** [Hono](https://hono.dev), [Zod](https://zod.dev), Eslint  
 **Database:** [Kysely](https://kysely.dev) (queries, migrations, types)  
-**Test:** [Bun test](https://bun.sh/docs/cli/test)
+**Test:** [Bun test](https://bun.sh/docs/cli/test)  
+**Docs:** [Scalar](https://scalar.com/)
 
 ## Requirements
 
@@ -175,8 +176,9 @@ pnpm db:generate:types
 
 ## Endpoints
 
-The endpoints are documented in the project under the "/endpoints" directory.  
-To run an access you can use the client or the extension.
+You can find the openapi generated on endpoint "/doc" or access the scalar generated on "/reference".
+
+There is also the "/endpoints" directory that contains endpoints generated to use with bruno. You can use the client or the extension to read them.
 
 - [Bruno API Client](https://www.usebruno.com).
 - [VSCode Extension](https://marketplace.visualstudio.com/items?itemName=bruno-api-client.bruno)

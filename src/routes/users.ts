@@ -97,8 +97,6 @@ app
     async c => {
       const data = c.req.valid('json')
 
-      console.log('WHERE', data?.where)
-
       const countUsers = new CountUsers(new UserRepository())
 
       const response = await countUsers.execute({
