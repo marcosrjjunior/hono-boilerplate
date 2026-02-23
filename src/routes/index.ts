@@ -1,27 +1,24 @@
-import { Hono } from 'hono'
 import { logger } from 'hono/logger'
 
+import health from './health'
 import users from './users'
 
-const app = new Hono()
+import { createRouter } from '../lib/router'
+
+const app = createRouter()
 
 app.use('*', logger())
 
 // custom middleware example
 // app.get('/', hello(), c => c.json({ 1: 'Hello', 2: 'World' }))
 
-app
-  .get('/health', c =>
-    c.json({
-      uptime: process.uptime(),
-      message: 'Ok',
-      date: new Date(),
-    }),
-  )
-  .route('/users', users)
+const routes = [health, users]
 
-// const routes = app
-// export type AppType = typeof routes
+routes.forEach(route => {
+  app.route('/', route)
+})
+
+export type AppType = (typeof routes)[number]
 // import { hc } from 'hono/client'
 // const client = hc<AppType>('')
 // client.users.count.$post()

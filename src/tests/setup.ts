@@ -21,7 +21,12 @@ const insertUsers = async () => {
   users = await db
     .insertInto('users')
     .values([
-      { name: 'Test', email: 'test@test.com', role: Role.ADMIN },
+      {
+        name: 'Test',
+        email: 'test@test.com',
+        role: Role.ADMIN,
+        mobile_phone_number: '+614161111112',
+      },
       { name: 'Test 2', email: 'test2@test.com', role: Role.MEMBER },
       { name: 'Test 3', email: 'test3@test.com', role: Role.MEMBER },
     ])

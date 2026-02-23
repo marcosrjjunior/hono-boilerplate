@@ -4,6 +4,7 @@
     "noImplicitAny": false,
     "jsx": "react-jsx",
     "jsxImportSource": "hono/jsx",
+    "resolveJsonModule": true,
 
     // Best practices
     "strict": true,
