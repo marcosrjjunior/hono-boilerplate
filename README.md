@@ -87,7 +87,7 @@ pnpm install
 <summary>Bun</summary>
 
 ```sh
-bun install --lockfile-only
+bun install
 # Reference: https://bun.sh/docs/install/lockfile
 ```
 
@@ -255,25 +255,13 @@ The core of this project is located in the /app directory, where I use only Java
 
 <details>
 
-<summary>Bun or node?</summary>
-
-Thanks to this structure, I can easily switch between them for testing. However, I still recommend using Node.js.
-
-It really depends on your project and situation. I haven’t had the chance to test it in a large-scale real-world project yet, so I can’t say for sure. However, Bun is expected to be more efficient and use less memory.
-
-Currently, I'm using Bun to run my tests, and it works well since it’s [based on Jest](https://bun.sh/docs/cli/test).
-
-</details>
-
-<details>
-
 <summary>Why hono?</summary>
 
 [Features](https://hono.dev/top#features)
 
 Based on my experience with Express.js and Fastify, I’ve found Hono to be powerful, easy to use, and supported by an active community.
 
-Give it a try.
+Give it a go.
 
 Here are some basic benchmarks (though they’re not particularly significant).  
 [Requests benchmark](https://web-frameworks-benchmark.netlify.app/result?f=express,hono,fastify,hono-bun)  
@@ -290,11 +278,11 @@ If you're still not convinced, Fastify is also an excellent option.
 > To run the project using nodejs, we need some extra dependencies.
 > These are already set in the project.
 
-```
-// dependencies
+```sh
+# dependencies
 @hono/node-server
 
-// devDependencies
+# devDependencies
 typescript
 tsx
 ```
@@ -310,9 +298,9 @@ tsx
 The setup is basically adding the middleware on the initial file.
 
 ```ts
-...
+// ...
 import { sentry } from '@hono/sentry'
-...
+// ...
 
 app.use(
   '*',
