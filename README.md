@@ -31,7 +31,7 @@ bun.ts:  # Initial file to run the project using Bun
 
 ## Tech Stack
 
-**Geral:** [Hono](https://hono.dev), [Zod](https://zod.dev), Eslint  
+**Geral:** [Hono](https://hono.dev), [Zod](https://zod.dev), [Eslint](https://eslint.org)  
 **Database:** [Kysely](https://kysely.dev) (queries, migrations, types)  
 **Test:** [Bun test](https://bun.sh/docs/cli/test)  
 **Docs:** [Scalar](https://scalar.com/)
