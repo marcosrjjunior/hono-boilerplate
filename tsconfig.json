@@ -5,7 +5,7 @@
     "jsx": "react-jsx",
     "jsxImportSource": "hono/jsx",
     "resolveJsonModule": true,
-    "types": ["node", "bun", "pg"],
+    "types": ["bun", "pg"],
 
     // Best practices
     "strict": true,

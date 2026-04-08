@@ -4,12 +4,12 @@ description: 'Setup node and package manager'
 runs:
   using: 'composite'
   steps:
-    - uses: pnpm/action-setup@v4
+    - uses: pnpm/action-setup@v5
       with:
         version: 10
 
     - name: Set node version
-      uses: actions/setup-node@v4
+      uses: actions/setup-node@v6
       with:
-        node-version: lts/jod
+        node-version-file: '.nvmrc'
         cache: 'pnpm'
