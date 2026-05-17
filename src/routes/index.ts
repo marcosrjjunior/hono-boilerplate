@@ -14,7 +14,7 @@ app.use(
   '*',
   cors({
     // origin: ['https://example.com', 'https://example.org'],
-    origin: (origin) => {
+    origin: origin => {
       return origin.endsWith('.example.com') ? origin : 'http://example.com'
     },
     allowHeaders: ['Content-Type', 'Authorization'],
