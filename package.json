@@ -1,7 +1,7 @@
 {
   "name": "hono-boilerplate",
   "description": "boilerplate to run a js server using bun or node",
-  "version": "1.6.5",
+  "version": "1.6.6",
   "author": "Marcos <hello@marcosrjjunior.com>",
   "scripts": {
     "bun:build": "bun build src/bun.ts --compile --minify --target bun --outfile api",
@@ -27,11 +27,11 @@
     "prettier": "prettier --write ./src"
   },
   "dependencies": {
-    "@dotenvx/dotenvx": "^1.71.0",
+    "@dotenvx/dotenvx": "^1.71.2",
     "@hono/node-server": "^2.0.4",
     "@hono/zod-openapi": "^1.4.0",
-    "@scalar/hono-api-reference": "^0.10.20",
-    "hono": "^4.12.23",
+    "@scalar/hono-api-reference": "^0.11.0",
+    "hono": "^4.12.24",
     "kysely": "^0.29.2",
     "kysely-migration-cli": "^0.4.2",
     "pg": "^8.21.0",
@@ -49,6 +49,6 @@
     "prettier": "^3.8.3",
     "tsx": "^4.22.4",
     "typescript": "^6.0.3",
-    "typescript-eslint": "^8.60.1"
+    "typescript-eslint": "^8.61.0"
   }
 }
