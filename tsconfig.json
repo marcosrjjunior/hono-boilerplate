@@ -6,6 +6,7 @@
     "jsxImportSource": "hono/jsx",
     "resolveJsonModule": true,
     "types": ["bun", "pg"],
+    "module": "CommonJS",
 
     // Best practices
     "strict": true,
