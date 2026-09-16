@@ -29,7 +29,7 @@ bun.ts:  # Initial file to run the project using Bun
 
 ## Tech Stack
 
-**Geral:** [Hono](https://hono.dev), [Zod](https://zod.dev), [Eslint](https://eslint.org)  
+**Geral:** [Hono](https://hono.dev), [Zod](https://zod.dev), [OxLint/Oxfmt](https://oxc.rs/)  
 **Database:** [Kysely](https://kysely.dev) (queries, migrations, types)  
 **Test:** [Bun test](https://bun.sh/docs/cli/test)  
 **Docs:** [Scalar](https://scalar.com/)
@@ -38,7 +38,6 @@ bun.ts:  # Initial file to run the project using Bun
 
 [node.js v20+](https://nodejs.org/en) or [bun](https://bun.sh)  
 [nvm](https://github.com/nvm-sh/nvm#install--update-script) installed to manage node versions  
-[pnpm](https://pnpm.io) to manage dependencies(npm install -g pnpm)
 
 ## Run Locally
 

@@ -1,7 +1,7 @@
 {
   "name": "hono-boilerplate",
   "description": "boilerplate to run a js server using bun or node",
-  "version": "1.7.0",
+  "version": "1.7.1",
   "author": "Marcos <hello@marcosrjjunior.com>",
   "scripts": {
     "bun:build": "bun build src/bun.ts --compile --minify --target bun --outfile api",
@@ -19,12 +19,13 @@
     "db:migrate:make": "kysely migrate:make",
     "db:seed": "kysely seed:run",
     "db:reset": "bun run db:migrate:redo && bun run db:seed",
-    "db:generate:types": "kysely-codegen --runtime-enums --out-file=./src/platform/persistence/schema.d.ts && bun run db:types:prettier",
-    "db:types:prettier": "prettier --write ./src/platform/persistence/schema.d.ts",
+    "db:generate:types": "kysely-codegen --runtime-enums --out-file=./src/platform/persistence/schema.d.ts && bun run db:types:format",
+    "db:types:format": "oxfmt ./src/platform/persistence/schema.d.ts",
     "check-types": "tsc --noemit --skipLibCheck",
     "lint": "oxlint ./src --type-aware --deny-warnings && bun run check-types",
     "lint:fix": "oxlint ./src --type-aware --fix",
-    "prettier": "prettier --write ./src",
+    "format": "oxfmt ./src",
+    "format:check": "oxfmt ./src --check",
     "init": "kysely init"
   },
   "dependencies": {
@@ -43,7 +44,7 @@
     "kysely-codegen": "^0.20.0",
     "oxlint": "^1.83.0",
     "oxlint-tsgolint": "^7.0.2001",
-    "prettier": "^3.9.6",
+    "oxfmt": "^0.68.0",
     "tsx": "^4.23.13",
     "typescript": "^7.0.2"
   }
