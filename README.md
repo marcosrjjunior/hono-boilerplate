@@ -14,12 +14,12 @@ Boilerplate for your typescript projects using [Hono](https://hono.dev).
 
 ## Project Structure
 
-The main implementation is organized into business vertical slices under `/src/domains` and technical infrastructure under `/src/platform`.
+The main implementation is organized into business slices under `/src/domains` and technical infrastructure under `/src/platform`.
 
 ```bash
 /src
 
-/src/domains: # Business capabilities organized as vertical slices
+/src/domains: # Business domains
 /src/platform: # Shared technical infrastructure
 /src/tests: # Integration test setup
 
