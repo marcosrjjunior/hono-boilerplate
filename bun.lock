@@ -5,28 +5,28 @@
     "": {
       "name": "hono-boilerplate",
       "dependencies": {
-        "@hono/node-server": "^2.0.9",
-        "@hono/zod-openapi": "^1.5.1",
-        "@scalar/hono-api-reference": "^0.11.9",
-        "hono": "^4.12.30",
+        "@hono/node-server": "^2.1.1",
+        "@hono/zod-openapi": "^1.6.3",
+        "@scalar/hono-api-reference": "^0.12.1",
+        "hono": "^4.13.8",
         "kysely": "^0.29.6",
         "kysely-ctl": "^0.21.0",
-        "pg": "^8.22.0",
-        "zod": "^4.4.3",
+        "pg": "^8.23.0",
+        "zod": "^4.6.5",
       },
       "devDependencies": {
         "@eslint/js": "^10.0.1",
-        "@types/bun": "^1.3.14",
-        "@types/pg": "^8.20.0",
-        "eslint": "^10.7.0",
+        "@types/bun": "^1.4.2",
+        "@types/pg": "^8.23.1",
+        "eslint": "^10.10.0",
         "eslint-config-prettier": "^10.1.8",
         "eslint-plugin-prettier": "^5.5.6",
         "eslint-plugin-unused-imports": "^4.4.1",
         "kysely-codegen": "^0.20.0",
-        "prettier": "^3.9.5",
-        "tsx": "^4.23.1",
+        "prettier": "^3.9.6",
+        "tsx": "^4.23.13",
         "typescript": "^6.0.3",
-        "typescript-eslint": "^8.62.0",
+        "typescript-eslint": "^8.70.0",
       },
     },
   },
@@ -131,15 +131,15 @@
 
     "@pkgr/core": ["@pkgr/core@0.3.6", "", {}, "sha512-SEeaJLb3qBNF/OaXnaR1NmmBbFYk1zC0ZH/52fATcRPLFg/p791YrcyFFy44Bo9sLaGuSuLp5Q6axbb/O+v/RA=="],
 
-    "@scalar/client-side-rendering": ["@scalar/client-side-rendering@0.3.9", "", { "dependencies": { "@scalar/schemas": "0.8.3", "@scalar/types": "0.18.2", "@scalar/validation": "0.6.3" } }, "sha512-Gg+VLhreiWHmHN0i9uatEoIxzsr0FaJoq0x+PkypmFgZFniD477DVCAnmWqx+KXlpFg0VtDanDHARIJXZ1fIeQ=="],
+    "@scalar/client-side-rendering": ["@scalar/client-side-rendering@0.4.0", "", { "dependencies": { "@scalar/schemas": "0.9.0", "@scalar/types": "0.19.0", "@scalar/validation": "0.6.3" } }, "sha512-a8OUod1LZbNqkPv73ijRPL3MH2/3E92I5Awa9mGXtCaIVavY3JcF7+qZW4GOtffihTfuD/CxhZ+CnQhCZds2oQ=="],
 
-    "@scalar/helpers": ["@scalar/helpers@0.11.1", "", {}, "sha512-Knwbe0IYqFk0PPDoOKLasqglBHfyf9/zwWWqFsSNi/AtdjM29wSZXN6p8DFid6iB5B9epYH9YiSgJ6tpD00TEw=="],
+    "@scalar/helpers": ["@scalar/helpers@0.11.3", "", {}, "sha512-4zPzuNTXObDUtZS93xzAoK83ddHDgBGifv/vKFe6bHqEl5i+IMLTTtEHOaaOZK4dusPEXcXsU5TBSaY/I6Mi+A=="],
 
-    "@scalar/hono-api-reference": ["@scalar/hono-api-reference@0.11.16", "", { "dependencies": { "@scalar/client-side-rendering": "0.3.9" }, "peerDependencies": { "hono": "^4.12.5" } }, "sha512-y0duqBJF2yQhkkk7xMFyWSx06+Y0ImOLtVKDH3d+jgTaVGbAtyxwkuKmj+Dd7eq3t9P7XnZx4YgBJ0S9WzsIQQ=="],
+    "@scalar/hono-api-reference": ["@scalar/hono-api-reference@0.12.1", "", { "dependencies": { "@scalar/client-side-rendering": "0.4.0" }, "peerDependencies": { "hono": "^4.12.5" } }, "sha512-RbAMvXihbZLFn3aFLQ2cW/AVIyPILujCUbaBcFVBztL6mbcDk87H10xCa5Bl5xVKalmoJwnUIV+8zMxNizh07w=="],
 
-    "@scalar/schemas": ["@scalar/schemas@0.8.3", "", { "dependencies": { "@scalar/helpers": "0.11.1", "@scalar/validation": "0.6.3" } }, "sha512-cTjgiJxXFXMqXlFZafXOyTOKm1lUfbDTbe9La+dPcQPe6q0zXAiVtys0IKILQWNrjXPidY0eaB9Va/rd16bfxw=="],
+    "@scalar/schemas": ["@scalar/schemas@0.9.0", "", { "dependencies": { "@scalar/helpers": "0.11.3", "@scalar/validation": "0.6.3" } }, "sha512-yYRlIWzw+7HuIX4z7rk7tg4y1nERwvvWKbolZOm7LveSTrppllGKyjtnIqS5uXsmJddERxuurSgDW224gGJlFQ=="],
 
-    "@scalar/types": ["@scalar/types@0.18.2", "", { "dependencies": { "@scalar/helpers": "0.11.1", "nanoid": "^5.1.6", "type-fest": "^5.8.0", "zod": "^4.3.5" } }, "sha512-q7fGMn0IygdLbYk9W4quM0w1caHDfL9FIxsYXNsgIep6uuO0T/t4BOStyf0qyzQ3pjt0B7rWFxO//EM9I7F/Tw=="],
+    "@scalar/types": ["@scalar/types@0.19.0", "", { "dependencies": { "@scalar/helpers": "0.11.3", "nanoid": "^5.1.6", "type-fest": "^5.8.0", "zod": "^4.4.3" } }, "sha512-EKeoWgUlP+uepbM/zEHKbsdpBNyOmSrw6DdU/WC0p53gz5uRzI7d/IEecIP9SQMUkResPR9DmWeWfFQftG7vqg=="],
 
     "@scalar/validation": ["@scalar/validation@0.6.3", "", {}, "sha512-j3s9XPv8Wo1EG5/naBi4XGF0uXYQ2A3QZNI0NKWgCMxRHVrDJGlZEYymcHDHY7fquRm73P8U3c8xqJqB5yad6w=="],
 
