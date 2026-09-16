@@ -1,0 +1,9 @@
+name: 'Bun install'
+description: 'Run Bun install'
+
+runs:
+  using: 'composite'
+  steps:
+    - name: Install dependencies
+      shell: bash
+      run: bun install --frozen-lockfile
