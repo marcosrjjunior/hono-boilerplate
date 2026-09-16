@@ -1,6 +1,6 @@
 import { beforeAll, afterAll } from 'bun:test'
-import { db } from '../lib/db'
-import { Role } from '../app/models'
+import { db } from '../platform/persistence/db'
+import { Role } from '../domains/users/users.types'
 
 let users: { id: string }[] = []
 beforeAll(async () => {
@@ -23,12 +23,12 @@ const insertUsers = async () => {
     .values([
       {
         name: 'Test',
-        email: 'test@test.com',
+        email: 'test2@test.com',
         role: Role.ADMIN,
         mobile_phone_number: '+614161111112',
       },
-      { name: 'Test 2', email: 'test2@test.com', role: Role.MEMBER },
-      { name: 'Test 3', email: 'test3@test.com', role: Role.MEMBER },
+      { name: 'Test 2', email: 'test3@test.com', role: Role.MEMBER },
+      { name: 'Test 3', email: 'test4test.com', role: Role.MEMBER },
     ])
     .returning('id')
     .execute()

@@ -14,16 +14,14 @@ Boilerplate for your typescript projects using [Hono](https://hono.dev).
 
 ## Project Structure
 
-The main implementation is inside of the `/app` directory where it uses basic ts node implementation.
+The main implementation is organized into business slices under `/src/domains` and technical infrastructure under `/src/platform`.
 
 ```bash
 /src
 
-/app/cases: # Use cases of your application
-/app/repositories: # Repositories and interfaces used by the use cases
-/lib/db: # Database structure: migrations, seed, types
-/routes: # Routes and middlewares
-/tests:  # Integration tests
+/src/domains: # Business domains
+/src/platform: # Shared technical infrastructure
+/src/tests: # Integration test setup
 
 node.ts: # Initial file to run the project using Node
 bun.ts:  # Initial file to run the project using Bun
@@ -77,7 +75,7 @@ cp .env.example .env
 
 ```sh
 nvm use
-pnpm install
+bun run install
 ```
 
 </details>
@@ -100,7 +98,7 @@ bun install
 <summary>Nodejs</summary>
 
 ```sh
-pnpm node:dev or pnpm dev
+bun run node:dev
 ```
 
 </details>
@@ -110,7 +108,7 @@ pnpm node:dev or pnpm dev
 <summary>Bun</summary>
 
 ```sh
-pnpm bun:dev
+bun run bun:dev
 ```
 
 </details>
@@ -119,12 +117,12 @@ From here you should be getting a server running on `http://localhost:3333`
 
 ## Manage your database using migrations
 
-Migrations are currently defined under `lib/db/migrations`. An initial migration is already there as an example, adjust to meet your project requirements. [Reference](https://kysely.dev/docs/migrations)
+Migrations are currently defined under `platform/persistence/migrations`. An initial migration is already there as an example, adjust to meet your project requirements. [Reference](https://kysely.dev/docs/migrations)
 
 Run all migrations
 
 ```sh
-pnpm db:migrate:up
+bun run db:migrate:up
 ```
 
 > This command will perform the "up" function for all new migrations
@@ -132,7 +130,7 @@ pnpm db:migrate:up
 Rollback previous migration
 
 ```sh
-pnpm db:migrate:down
+bun run db:migrate:down
 ```
 
 > This command will perform the "down" function from previous migration
@@ -140,13 +138,13 @@ pnpm db:migrate:down
 Run seed
 
 ```sh
-pnpm db:seed
+bun run db:seed
 ```
 
 Reset migrations + run seed
 
 ```sh
-pnpm db:reset
+bun run db:reset
 ```
 
 #### How to write a migration
@@ -156,10 +154,10 @@ To make an update on the database you will need to create a migration
 Run the command
 
 ```sh
-pnpm db:migrate:create
+bun run db:migrate:make migration_name
 ```
 
-This will generate a new file under `/lib/db/migrations/DATE-initial.ts`
+This will generate a new file under `/platform/persistence/migrations/DATE-initial.ts`
 
 - Rename the file to describe what the migration will do e.g `DATE-adding_phone_column_to_user.ts`
 
@@ -171,7 +169,7 @@ This project uses [kysely-codegen](https://github.com/RobinBlomberg/kysely-codeg
 After running the migration you can re-generate the types using
 
 ```sh
-pnpm db:generate:types
+bun run db:generate:types
 ```
 
 ## Endpoints
@@ -189,9 +187,9 @@ Tests are implemented using bun which follows a jest-compatible structure.
 
 ```sh
 # unit tests
-pnpm test
+bun run test
 
-pnpm test:integration
+bun run test:integration
 ```
 
 Tests also run on pull requests and push to main, check `.github/workflows/lint-and-test.yaml`
@@ -205,8 +203,8 @@ Tests also run on pull requests and push to main, check `.github/workflows/lint-
 <summary>Nodejs</summary>
 
 ```sh
-pnpm node:build
-pnpm node:start
+bun run node:build
+bun run node:start
 ```
 
 </details>
@@ -216,8 +214,8 @@ pnpm node:start
 <summary>Bun</summary>
 
 ```sh
-pnpm bun:build
-pnpm bun:start
+bun run bun:build
+bun run bun:start
 ```
 
 </details>

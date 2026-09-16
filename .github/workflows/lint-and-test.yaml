@@ -33,22 +33,17 @@ jobs:
       - name: Checkout repo
         uses: actions/checkout@v6
 
-      - name: Setup node and package manager
-        uses: ./.github/actions/setup-node-and-package-manager
-
-      - name: Install bun dependency to run tests
-        uses: oven-sh/setup-bun@v2
-        with:
-          bun-version: latest
+      - name: Setup Bun
+        uses: ./.github/actions/setup-bun
 
       - name: Install dependencies 📦
-        uses: ./.github/actions/pnpm-install
+        uses: ./.github/actions/bun-install
 
       - name: Run lint ✅
-        run: pnpm lint
+        run: bun run lint
 
       - name: Run unit tests ✅
-        run: pnpm test
+        run: bun run test
 
       # - name: Setup database
       #   run: |
@@ -63,7 +58,7 @@ jobs:
       #     PGPASSWORD=secret psql -h localhost -U postgres -d project  -c "CREATE EXTENSION fuzzystrmatch;"
 
       - name: Run db:migration 🆙
-        run: pnpm db:migrate:up
+        run: bun run db:migrate:up
 
       - name: Run integration tests ✅
-        run: pnpm test:integration
+        run: bun run test:integration

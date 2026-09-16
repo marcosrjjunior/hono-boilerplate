@@ -4,7 +4,7 @@ import { z } from 'zod/v4'
 
 import { version } from '../package.json'
 import { Scalar } from '@scalar/hono-api-reference'
-import app from './routes'
+import app from './platform/http/routes'
 
 // app.use('*', csrf({ origin: 'localhost' }))
 
