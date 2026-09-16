@@ -1,7 +1,7 @@
 import { createRoute, z } from '@hono/zod-openapi'
 
-import { createRouter } from '../lib/router'
-import { openAPI } from '../lib/openapi/json'
+import { openAPI } from '../http/openapi'
+import { createRouter } from '../http/router'
 
 const HealthResponseSchema = z.strictObject({
   uptime: z.number(),

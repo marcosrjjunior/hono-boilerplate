@@ -1,6 +1,6 @@
 import { beforeAll, afterAll } from 'bun:test'
-import { db } from '../lib/db'
-import { Role } from '../app/models'
+import { db } from '../platform/persistence/db'
+import { Role } from '../domains/users/users.types'
 
 let users: { id: string }[] = []
 beforeAll(async () => {

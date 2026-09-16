@@ -14,16 +14,14 @@ Boilerplate for your typescript projects using [Hono](https://hono.dev).
 
 ## Project Structure
 
-The main implementation is inside of the `/app` directory where it uses basic ts node implementation.
+The main implementation is organized into business vertical slices under `/src/domains` and technical infrastructure under `/src/platform`.
 
 ```bash
 /src
 
-/app/cases: # Use cases of your application
-/app/repositories: # Repositories and interfaces used by the use cases
-/lib/db: # Database structure: migrations, seed, types
-/routes: # Routes and middlewares
-/tests:  # Integration tests
+/src/domains: # Business capabilities organized as vertical slices
+/src/platform: # Shared technical infrastructure
+/src/tests: # Integration test setup
 
 node.ts: # Initial file to run the project using Node
 bun.ts:  # Initial file to run the project using Bun
@@ -159,7 +157,7 @@ Run the command
 pnpm db:migrate:create
 ```
 
-This will generate a new file under `/lib/db/migrations/DATE-initial.ts`
+This will generate a new file under `/src/platform/persistence/migrations/DATE-initial.ts`
 
 - Rename the file to describe what the migration will do e.g `DATE-adding_phone_column_to_user.ts`
 

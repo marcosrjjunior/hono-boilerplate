@@ -10,13 +10,9 @@ export const withTimestamps = (qb: any) => {
     )
 }
 
-export const softDelete = qb => {
-  return qb.addColumn('deleted_at', 'timestamp')
-}
+export const softDelete = qb => qb.addColumn('deleted_at', 'timestamp')
 
-export const softDeleteSqlite = qb => {
-  return qb.addColumn('deleted_at', 'text')
-}
+export const softDeleteSqlite = qb => qb.addColumn('deleted_at', 'text')
 
 export const withTimestampsSqlite = (qb: any) => {
   return qb

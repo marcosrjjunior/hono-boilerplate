@@ -1,8 +1,9 @@
-import { Role } from '../../models'
+export enum Role {
+  ADMIN = 'ADMIN',
+  GUEST = 'GUEST',
+  MEMBER = 'MEMBER',
+}
 
-/**
- * @interface UserRepository
- **/
 export type CreateUserParams = {
   name: string
   email: string
@@ -24,7 +25,7 @@ export type CountUsersResponse = {
   count: number
 }
 
-export type IUserRepository = {
+export type UserRepository = {
   create(params: CreateUserParams): Promise<CreateUserResponse>
   count(params: CountUsersParams): Promise<CountUsersResponse>
 }

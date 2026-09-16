@@ -1,14 +1,13 @@
-import { db } from '.'
-import { Role } from '../../app/models'
+import { db } from './db'
+import { Role } from '../../domains/users/users.types'
 
 async function main() {
   await db
     .insertInto('users')
     .values([{ name: 'Test', email: 'test@test.com', role: Role.MEMBER }])
-    // .onConflict(oc => oc.column('name').doNothing()) // : )
     .execute()
 
-  console.log(`Seeding finished.`)
+  console.log('Seeding finished.')
 }
 
 main()

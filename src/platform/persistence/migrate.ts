@@ -1,9 +1,9 @@
 import { promises as fs } from 'fs'
-import { Migrator, FileMigrationProvider } from 'kysely/migration'
+import { FileMigrationProvider, Migrator } from 'kysely/migration'
 import { run } from 'kysely-migration-cli'
 import path from 'path'
 
-import { db } from '.'
+import { db } from './db'
 
 const migrator = new Migrator({
   db,
@@ -14,4 +14,4 @@ const migrator = new Migrator({
   }),
 })
 
-run(db, migrator, './src/lib/db/migrations')
+run(db, migrator, './src/platform/persistence/migrations')
