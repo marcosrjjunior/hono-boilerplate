@@ -22,8 +22,8 @@
     "db:generate:types": "kysely-codegen --runtime-enums --out-file=./src/platform/persistence/schema.d.ts && bun run db:types:prettier",
     "db:types:prettier": "prettier --write ./src/platform/persistence/schema.d.ts",
     "check-types": "tsc --noemit --skipLibCheck",
-    "lint": "eslint ./src --max-warnings 0 && bun run check-types",
-    "lint:fix": "eslint ./src --fix",
+    "lint": "oxlint ./src --type-aware --deny-warnings && bun run check-types",
+    "lint:fix": "oxlint ./src --type-aware --fix",
     "prettier": "prettier --write ./src",
     "init": "kysely init"
   },
@@ -38,17 +38,13 @@
     "zod": "^4.6.5"
   },
   "devDependencies": {
-    "@eslint/js": "^10.0.1",
     "@types/bun": "^1.4.2",
     "@types/pg": "^8.23.1",
-    "eslint": "^10.10.0",
-    "eslint-config-prettier": "^10.1.8",
-    "eslint-plugin-prettier": "^5.5.6",
-    "eslint-plugin-unused-imports": "^4.4.1",
     "kysely-codegen": "^0.20.0",
+    "oxlint": "^1.83.0",
+    "oxlint-tsgolint": "^7.0.2001",
     "prettier": "^3.9.6",
     "tsx": "^4.23.13",
-    "typescript": "^6.0.3",
-    "typescript-eslint": "^8.70.0"
+    "typescript": "^7.0.2"
   }
 }

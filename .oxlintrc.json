@@ -1,0 +1,15 @@
+{
+  "$schema": "./node_modules/oxlint/configuration_schema.json",
+  "categories": {
+    "correctness": "error"
+  },
+  "rules": {
+    "typescript/no-explicit-any": "off",
+    "typescript/no-empty-function": "off",
+    "typescript/no-namespace": "off",
+    "typescript/no-inferrable-types": "off",
+    "typescript/consistent-type-definitions": "off",
+    "typescript/no-unused-vars": "off",
+    "typescript/no-misused-spread": "off"
+  }
+}
