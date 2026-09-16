@@ -7,6 +7,9 @@ describe('Count user [POST:/users/count]', () => {
   it('should fail with invalid params', async () => {
     const res = await app.request('/users/count', {
       method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
       body: JSON.stringify({
         invalid: 'invalid',
       }),
