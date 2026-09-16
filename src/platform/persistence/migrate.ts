@@ -1,5 +1,5 @@
 import { promises as fs } from 'fs'
-import { FileMigrationProvider, Migrator } from 'kysely/migration'
+import { FileMigrationProvider, Migrator } from 'kysely'
 import { run } from 'kysely-migration-cli'
 import path from 'path'
 

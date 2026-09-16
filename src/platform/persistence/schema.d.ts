@@ -12,10 +12,6 @@ export type Generated<T> =
 
 export type Timestamp = ColumnType<Date, Date | string, Date | string>
 
-export interface Test {
-  id: Generated<string>
-}
-
 export interface Users {
   created_at: Generated<Timestamp>
   deleted_at: Timestamp | null
@@ -30,6 +26,5 @@ export interface Users {
 }
 
 export interface DB {
-  test: Test
   users: Users
 }
