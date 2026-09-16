@@ -4,10 +4,15 @@ import { openAPI } from '../../../platform/http/openapi'
 import { createRouter } from '../../../platform/http/router'
 import { KyselyCreateUserRepository } from './create-user.repository'
 import { createUser } from './create-user.service'
-import { CreateUserResponseSchema, CreateUserSchema } from './create-user.schemas'
+import {
+  CreateUserResponseSchema,
+  CreateUserSchema,
+} from './create-user.schemas'
 
 const app = createRouter()
-const service = createUser(new KyselyCreateUserRepository())
+
+const repository = new KyselyCreateUserRepository()
+const service = createUser(repository.create)
 
 app.openapi(
   createRoute({

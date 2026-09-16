@@ -3,6 +3,7 @@ import { logger } from 'hono/logger'
 
 import users from '../../domains/users/users.routes'
 import health from '../health/health.routes'
+
 import { createRouter } from './router'
 
 const app = createRouter()

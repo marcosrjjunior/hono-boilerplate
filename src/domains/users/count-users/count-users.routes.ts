@@ -10,7 +10,9 @@ import {
 } from './count-users.schemas'
 
 const app = createRouter()
-const service = countUsers(new KyselyCountUsersRepository())
+
+const repository = new KyselyCountUsersRepository()
+const service = countUsers(repository.count)
 
 app.openapi(
   createRoute({
