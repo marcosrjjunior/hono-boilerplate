@@ -1,8 +1,11 @@
 import { db } from '../../../platform/persistence/db'
 import { Role } from '../users.types'
-import type { CountUsersParams } from './count-users.service'
+import type {
+  CountUsersParams,
+  CountUsersRepository,
+} from './count-users.service'
 
-export class KyselyCountUsersRepository {
+export class KyselyCountUsersRepository implements CountUsersRepository {
   count = async ({ where }: CountUsersParams) => {
     let query = db
       .selectFrom('users')

@@ -3,13 +3,15 @@ import { describe, expect, it } from 'bun:test'
 import { createUser } from './create-user.service'
 import { Role } from '../users.types'
 
-const create = async () => ({
-  id: 'ce3c8cad-ae9d-4f46-b2c2-1440bdac16b7',
-})
+const repository = {
+  create: async () => ({
+    id: 'ce3c8cad-ae9d-4f46-b2c2-1440bdac16b7',
+  }),
+}
 
 describe('create user service', () => {
   it('creates a user through the repository', async () => {
-    const service = createUser(create)
+    const service = createUser(repository)
 
     const response = await service.execute({
       name: 'User 1',

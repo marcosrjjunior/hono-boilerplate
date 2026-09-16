@@ -1,7 +1,10 @@
 import { db } from '../../../platform/persistence/db'
-import type { CreateUserParams } from './create-user.service'
+import type {
+  CreateUserParams,
+  CreateUserRepository,
+} from './create-user.service'
 
-export class KyselyCreateUserRepository {
+export class KyselyCreateUserRepository implements CreateUserRepository {
   create = async ({
     name,
     email,

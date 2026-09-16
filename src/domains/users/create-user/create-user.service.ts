@@ -11,11 +11,13 @@ export type CreateUserResponse = {
   id: string
 }
 
-export const createUser = (
-  create: (params: CreateUserParams) => Promise<CreateUserResponse>,
-) => ({
+export interface CreateUserRepository {
+  create(params: CreateUserParams): Promise<CreateUserResponse>
+}
+
+export const createUser = (repository: CreateUserRepository) => ({
   execute: async (params: CreateUserParams): Promise<CreateUserResponse> => {
-    const response = await create(params)
+    const response = await repository.create(params)
 
     return response
   },

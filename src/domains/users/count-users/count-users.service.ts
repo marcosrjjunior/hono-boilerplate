@@ -10,11 +10,13 @@ export type CountUsersResponse = {
   count: number
 }
 
-export const countUsers = (
-  count: (params: CountUsersParams) => Promise<CountUsersResponse>,
-) => ({
+export interface CountUsersRepository {
+  count(params: CountUsersParams): Promise<CountUsersResponse>
+}
+
+export const countUsers = (repository: CountUsersRepository) => ({
   execute: async (params: CountUsersParams): Promise<CountUsersResponse> => {
-    const response = await count(params)
+    const response = await repository.count(params)
 
     return response
   },

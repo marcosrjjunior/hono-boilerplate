@@ -12,7 +12,7 @@ import {
 const app = createRouter()
 
 const repository = new KyselyCountUsersRepository()
-const service = countUsers(repository.count)
+const service = countUsers(repository)
 
 app.openapi(
   createRoute({

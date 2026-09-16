@@ -12,7 +12,7 @@ import {
 const app = createRouter()
 
 const repository = new KyselyCreateUserRepository()
-const service = createUser(repository.create)
+const service = createUser(repository)
 
 app.openapi(
   createRoute({
