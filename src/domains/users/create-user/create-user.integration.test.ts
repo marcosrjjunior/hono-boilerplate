@@ -1,8 +1,8 @@
 import { afterAll, describe, expect, it } from 'bun:test'
 
-import { app } from '../../app'
-import { db } from '../../platform/persistence/db'
-import { Role } from './users.types'
+import { app } from '../../../app'
+import { db } from '../../../platform/persistence/db'
+import { Role } from '../users.types'
 
 const userIds: string[] = []
 

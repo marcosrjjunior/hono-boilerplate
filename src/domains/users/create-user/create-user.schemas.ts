@@ -1,16 +1,6 @@
 import { z } from '@hono/zod-openapi'
 
-import { Role } from './users.types'
-
-export const CountUserSchema = z.strictObject({
-  where: z.object({
-    role: z.enum(Role).optional(),
-  }),
-})
-
-export const CountUserResponseSchema = z.strictObject({
-  count: z.number(),
-})
+import { Role } from '../users.types'
 
 const phoneRule = z
   .string()

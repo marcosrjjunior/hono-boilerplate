@@ -1,7 +1,7 @@
 import { describe, it, expect } from 'bun:test'
 
-import { app } from '../../app'
-import { Role } from './users.types'
+import { app } from '../../../app'
+import { Role } from '../users.types'
 
 describe('Count user [POST:/users/count]', () => {
   it('should fail with invalid params', async () => {
