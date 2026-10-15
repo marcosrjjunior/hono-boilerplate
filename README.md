@@ -156,11 +156,7 @@ Run the command
 bun run db:migrate:make migration_name
 ```
 
-This will generate a new file under `/platform/persistence/migrations/DATE-initial.ts`
-
-- Rename the file to describe what the migration will do e.g `DATE-adding_phone_column_to_user.ts`
-
-- Functions **up** and **down** should work.
+This will generate a new file under `/platform/persistence/migrations/DATE-migration_name.ts`
 
 ##### DB types
 
