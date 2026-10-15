@@ -21,6 +21,7 @@ The main implementation is organized into business slices under `/src/domains` a
 
 /src/domains: # Business domains
 /src/platform: # Shared technical infrastructure
+/src/platform/http: # Router, and the OpenAPI generator
 /src/tests: # Integration test setup
 
 node.ts: # Initial file to run the project using Node
@@ -29,7 +30,7 @@ bun.ts:  # Initial file to run the project using Bun
 
 ## Tech Stack
 
-**Geral:** [Hono](https://hono.dev), [Zod](https://zod.dev), [OxLint/Oxfmt](https://oxc.rs/)  
+**General:** [Hono v5](https://hono.dev), [Zod](https://zod.dev) for validation (any [Standard Schema](https://standardschema.dev) library can be used instead), [OxLint/Oxfmt](https://oxc.rs/)  
 **Database:** [Kysely](https://kysely.dev) (queries, migrations, types)  
 **Test:** [Bun test](https://bun.sh/docs/cli/test)  
 **Docs:** [Scalar](https://scalar.com/)
@@ -37,7 +38,7 @@ bun.ts:  # Initial file to run the project using Bun
 ## Requirements
 
 [node.js v20+](https://nodejs.org/en) or [bun](https://bun.sh)  
-[nvm](https://github.com/nvm-sh/nvm#install--update-script) installed to manage node versions  
+[nvm](https://github.com/nvm-sh/nvm#install--update-script) installed to manage node versions
 
 ## Run Locally
 
@@ -70,17 +71,6 @@ cp .env.example .env
 
 <details>
 
-<summary>Nodejs</summary>
-
-```sh
-nvm use
-bun run install
-```
-
-</details>
-
-<details>
-
 <summary>Bun</summary>
 
 ```sh
@@ -90,17 +80,18 @@ bun install
 
 </details>
 
-#### **Run the project**
-
 <details>
 
 <summary>Nodejs</summary>
 
 ```sh
-bun run node:dev
+nvm use
+npm install
 ```
 
 </details>
+
+#### **Run the project**
 
 <details>
 
@@ -108,6 +99,16 @@ bun run node:dev
 
 ```sh
 bun run bun:dev
+```
+
+</details>
+
+<details>
+
+<summary>Nodejs</summary>
+
+```sh
+bun run node:dev
 ```
 
 </details>
@@ -184,6 +185,7 @@ Tests are implemented using bun which follows a jest-compatible structure.
 # unit tests
 bun run test
 
+# runs agains your local pg
 bun run test:integration
 ```
 
@@ -195,22 +197,22 @@ Tests also run on pull requests and push to main, check `.github/workflows/lint-
 
 <details>
 
-<summary>Nodejs</summary>
+<summary>Bun</summary>
 
 ```sh
-bun run node:build
-bun run node:start
+bun run bun:build
+bun run bun:start
 ```
 
 </details>
 
 <details>
 
-<summary>Bun</summary>
+<summary>Nodejs</summary>
 
 ```sh
-bun run bun:build
-bun run bun:start
+bun run node:build
+bun run node:start
 ```
 
 </details>
@@ -238,16 +240,6 @@ Feel free to adapt these ideas to fit your needs.
 
 <details>
 
-<summary>Framework agnostic?</summary>
-
-Thanks to Hono's simplicity, you can structure your project in a way that suits your needs.
-
-The core of this project is located in the /app directory, where I use only JavaScript; none of these files are specific to Hono. This means that if you ever need to switch away from Hono for any reason, you can simply copy the /app directory and adjust the request handling as needed.
-
-</details>
-
-<details>
-
 <summary>Why hono?</summary>
 
 [Features](https://hono.dev/top#features)
@@ -268,16 +260,11 @@ If you're still not convinced, Fastify is also an excellent option.
 
 **Nodejs**
 
-> To run the project using nodejs, we need some extra dependencies.
-> These are already set in the project.
+> To run the project with Nodejs, use the @hono/node-server dependency, which is already included.
 
 ```sh
 # dependencies
 @hono/node-server
-
-# devDependencies
-typescript
-tsx
 ```
 
 ---
@@ -308,13 +295,13 @@ app.use(
 Then you can call on your global `app.onError`
 
 ```ts
-app.onError((error, c) => {
+app.onError(c => {
   c.get('sentry').captureException(e, {
     tags: {}, // any tag
     extra: {}, // any extra object
   })
 
-  return c.json({ error, message: error.message || 'Unknown Error' }, 500)
+  return c.json({ error, message: c.error?.message || 'Unknown Error' }, 500)
 })
 ```
 
