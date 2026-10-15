@@ -8,7 +8,7 @@ import app from './platform/http/routes'
 
 // app.use('*', csrf({ origin: 'localhost' }))
 
-app.onError((error, c) => {
+app.onError(c => {
   // Log error (Sentry, ....)
   // captureException({
   //   error: error,
@@ -17,15 +17,16 @@ app.onError((error, c) => {
   //   },
   // })
 
-  if (error instanceof z.ZodError) {
-    const errors = z.flattenError(error)
+  if (c.error instanceof z.ZodError) {
+    const errors = z.flattenError(c.error)
 
     return c.json({ error: errors, message: 'ZodError' }, 400)
   }
 
-  console.error(error)
+  console.error(c.error)
+
   return c.json(
-    { error, message: error.message || 'Custom Error Message' },
+    { error: c.error, message: c.error?.message || 'Custom Error Message' },
     500,
   )
 })

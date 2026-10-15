@@ -16,7 +16,7 @@ const service = countUsers(repository)
 
 app.openapi(
   createRoute({
-    method: 'post',
+    method: 'query',
     path: '/users/count',
     request: {
       body: openAPI.jsonRequired(CountUsersSchema, 'Users count request'),
