@@ -1,6 +1,5 @@
-import { createRoute } from '@hono/zod-openapi'
+import { defineHandler } from 'hono/factory'
 
-import { openAPI } from '../../../platform/http/openapi'
 import { createRouter } from '../../../platform/http/router'
 import { KyselyCountUsersRepository } from './count-users.repository'
 import { countUsers } from './count-users.service'
@@ -14,22 +13,16 @@ const app = createRouter()
 const repository = new KyselyCountUsersRepository()
 const service = countUsers(repository)
 
-app.openapi(
-  createRoute({
-    method: 'query',
-    path: '/users/count',
-    request: {
-      body: openAPI.jsonRequired(CountUsersSchema, 'Users count request'),
-    },
-    responses: {
-      200: openAPI.json(CountUsersResponseSchema, 'Users count response'),
-    },
-  }),
-  async c => {
-    const response = await service.execute(c.req.valid('json'))
+app.query(
+  '/users/count',
+  defineHandler({
+    json: CountUsersSchema,
+    response: CountUsersResponseSchema,
+  })(async (_, { json }) => {
+    const response = service.execute(json)
 
-    return c.json(response, 200)
-  },
+    return response
+  }),
 )
 
 export default app

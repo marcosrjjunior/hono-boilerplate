@@ -21,7 +21,7 @@ describe('Create user [POST:/users]', () => {
     const data = await res.json()
 
     expect(res.status).toBe(400)
-    expect(data.message).toBe('ZodError')
+    expect(data.error).toBe('Validation failed')
   })
 
   it(`should fail with invalid params for ${Role.ADMIN} user`, async () => {
@@ -74,7 +74,7 @@ describe('Create user [POST:/users]', () => {
       const data = await res.json()
 
       expect(res.status).toBe(400)
-      expect(data.message).toBe('ZodError')
+      expect(data.error).toBe('Validation failed')
     }
   })
 

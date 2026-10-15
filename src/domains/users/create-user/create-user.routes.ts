@@ -1,6 +1,5 @@
-import { createRoute } from '@hono/zod-openapi'
+import { defineHandler } from 'hono/factory'
 
-import { openAPI } from '../../../platform/http/openapi'
 import { createRouter } from '../../../platform/http/router'
 import { KyselyCreateUserRepository } from './create-user.repository'
 import { createUser } from './create-user.service'
@@ -14,22 +13,16 @@ const app = createRouter()
 const repository = new KyselyCreateUserRepository()
 const service = createUser(repository)
 
-app.openapi(
-  createRoute({
-    method: 'post',
-    path: '/users',
-    request: {
-      body: openAPI.jsonRequired(CreateUserSchema, 'Create user request'),
-    },
-    responses: {
-      200: openAPI.json(CreateUserResponseSchema, 'Create user response'),
-    },
-  }),
-  async c => {
-    const response = await service.execute(c.req.valid('json'))
+app.post(
+  '/users',
+  defineHandler({
+    json: CreateUserSchema,
+    response: CreateUserResponseSchema,
+  })(async (_, { json }) => {
+    const response = service.execute(json)
 
-    return c.json(response, 200)
-  },
+    return response
+  }),
 )
 
 export default app

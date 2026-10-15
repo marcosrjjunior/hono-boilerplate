@@ -30,9 +30,9 @@
   },
   "dependencies": {
     "@hono/node-server": "^2.1.1",
-    "@hono/zod-openapi": "^1.6.3",
     "@scalar/hono-api-reference": "^0.12.1",
-    "hono": "^4.13.8",
+    "@standard-community/standard-openapi": "^0.2.10",
+    "hono": "^5.0.0-rc.1",
     "kysely": "^0.29.6",
     "kysely-ctl": "^0.21.0",
     "pg": "^8.23.0",

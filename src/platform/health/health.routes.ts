@@ -1,6 +1,6 @@
-import { createRoute, z } from '@hono/zod-openapi'
+import { defineHandler } from 'hono/factory'
+import { z } from 'zod/v4'
 
-import { openAPI } from '../http/openapi'
 import { createRouter } from '../http/router'
 
 const HealthResponseSchema = z.strictObject({
@@ -11,21 +11,13 @@ const HealthResponseSchema = z.strictObject({
 
 const app = createRouter()
 
-app.openapi(
-  createRoute({
-    method: 'get',
-    path: '/health',
-    responses: {
-      200: openAPI.json(HealthResponseSchema, 'Health endpoint'),
-    },
-  }),
-  c => {
-    return c.json({
-      uptime: process.uptime(),
-      message: 'Ok',
-      date: new Date(),
-    })
-  },
+app.get(
+  '/health',
+  defineHandler({ response: HealthResponseSchema })(() => ({
+    uptime: process.uptime(),
+    message: 'Ok',
+    date: new Date().toISOString(),
+  })),
 )
 
 export default app

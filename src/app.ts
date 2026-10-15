@@ -1,10 +1,11 @@
 // import { csrf } from 'hono/csrf'
 
-import { z } from 'zod/v4'
+import { HTTPException } from 'hono/http-exception'
 
 import { version } from '../package.json'
 import { Scalar } from '@scalar/hono-api-reference'
 import app from './platform/http/routes'
+import { createOpenAPIDocument } from './platform/http/openapi'
 
 // app.use('*', csrf({ origin: 'localhost' }))
 
@@ -17,10 +18,12 @@ app.onError(c => {
   //   },
   // })
 
-  if (c.error instanceof z.ZodError) {
-    const errors = z.flattenError(c.error)
+  if (c.error instanceof HTTPException) {
+    if (c.error.res) {
+      return c.error.getResponse()
+    }
 
-    return c.json({ error: errors, message: 'ZodError' }, 400)
+    return c.json({ error: c.error.message }, c.error.status)
   }
 
   console.error(c.error)
@@ -35,12 +38,19 @@ app.notFound(c => {
   return c.text('404 Not found', 404)
 })
 
-app.doc('/doc', {
-  openapi: '3.2.0',
-  info: {
-    version,
-    title: 'My API',
-  },
+const openAPIInfo = {
+  title: 'My API',
+  version,
+}
+
+let openAPIDocument:
+  | Awaited<ReturnType<typeof createOpenAPIDocument>>
+  | undefined
+
+app.get('/doc', async c => {
+  openAPIDocument ??= await createOpenAPIDocument(app, openAPIInfo)
+
+  return c.json(openAPIDocument)
 })
 
 app.get(

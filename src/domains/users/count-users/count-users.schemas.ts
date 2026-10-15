@@ -1,4 +1,4 @@
-import { z } from '@hono/zod-openapi'
+import { z } from 'zod/v4'
 
 import { Role } from '../users.types'
 
