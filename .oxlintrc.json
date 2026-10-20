@@ -3,7 +3,9 @@
   "categories": {
     "correctness": "error"
   },
+  "jsPlugins": ["./lint/no-restricted-dirs.mjs"],
   "rules": {
+    "no-restricted-dirs/no-restricted-dirs": "error",
     "typescript/no-explicit-any": "off",
     "typescript/no-empty-function": "off",
     "typescript/no-namespace": "off",
