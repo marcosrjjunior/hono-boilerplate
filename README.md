@@ -30,7 +30,7 @@ bun.ts:  # Initial file to run the project using Bun
 
 ## Tech Stack
 
-**General:** [Hono v5](https://hono.dev), [Zod](https://zod.dev) for validation (any [Standard Schema](https://standardschema.dev) library can be used instead), [OxLint/Oxfmt](https://oxc.rs/)  
+**General:** [Hono v5](https://hono.dev), [Zod](https://zod.dev) for validation (any [Standard Schema](https://standardschema.dev) library can be used instead), [OxLint](https://oxc.rs/), [Bun fmt](https://bun.com/docs/format)  
 **Database:** [Kysely](https://kysely.dev) (queries, migrations, types)  
 **Test:** [Bun test](https://bun.sh/docs/cli/test)  
 **Docs:** [Scalar](https://scalar.com/)

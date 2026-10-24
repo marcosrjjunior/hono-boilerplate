@@ -1,0 +1,7 @@
+[fmt]
+printWidth = 80
+singleQuote = true
+semi = false
+arrowParens = "avoid"
+endOfLine = "lf"
+ignorePatterns = [".next", ".vscode", ".yarn", "node_modules", "*.lock"]

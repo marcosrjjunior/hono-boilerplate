@@ -44,8 +44,7 @@ const openAPIInfo = {
 }
 
 let openAPIDocument:
-  | Awaited<ReturnType<typeof createOpenAPIDocument>>
-  | undefined
+  Awaited<ReturnType<typeof createOpenAPIDocument>> | undefined
 
 app.get('/doc', async c => {
   openAPIDocument ??= await createOpenAPIDocument(app, openAPIInfo)

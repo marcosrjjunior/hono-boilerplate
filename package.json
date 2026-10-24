@@ -20,12 +20,12 @@
     "db:seed": "kysely seed:run",
     "db:reset": "bun run db:migrate:redo && bun run db:seed",
     "db:generate:types": "kysely-codegen --runtime-enums --out-file=./src/platform/persistence/schema.d.ts && bun run db:types:format",
-    "db:types:format": "oxfmt ./src/platform/persistence/schema.d.ts",
+    "db:types:format": "bun fmt ./src/platform/persistence/schema.d.ts",
     "check-types": "tsc --noemit --skipLibCheck",
     "lint": "oxlint ./src --type-aware --deny-warnings && bun run check-types",
     "lint:fix": "oxlint ./src --type-aware --fix",
-    "format": "oxfmt ./src",
-    "format:check": "oxfmt ./src --check",
+    "format": "bun fmt .",
+    "format:check": "bun fmt --check .",
     "init": "kysely init"
   },
   "dependencies": {
@@ -42,7 +42,6 @@
     "@types/bun": "^1.4.3",
     "@types/pg": "^8.23.1",
     "kysely-codegen": "^0.20.0",
-    "oxfmt": "^0.73.0",
     "oxlint": "^1.88.0",
     "oxlint-tsgolint": "^7.0.2004",
     "typescript": "^7.0.2"
