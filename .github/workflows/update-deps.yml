@@ -1,0 +1,71 @@
+name: Update dependencies
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  pull-requests: write
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    env:
+      GH_TOKEN: ${{ github.token }}
+      BASE_BRANCH: ${{ github.event.repository.default_branch }}
+      BRANCH: deps/update-${{ github.run_id }}
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v7
+
+      - name: Setup Bun
+        uses: ./.github/actions/setup-bun
+
+      - name: Create branch
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git checkout -b "${BRANCH}"
+
+      - name: Build context
+        run: |
+          {
+            echo "# Initial context"
+            echo
+            echo "Current date and time (UTC): $(date -u)"
+            echo "Working branch: ${BRANCH}"
+          } > "${RUNNER_TEMP}/initial-context.md"
+
+      - name: Run update agent
+        uses: ./.github/actions/run-agent
+        with:
+          message: >-
+            Update the dependencies of this project to their newest versions.
+            Read AGENTS.md first and follow its rules, including the commit format.
+            Use bun outdated to find what is behind, then update package.json and bun.lock.
+            Skip a major update when the code change it needs is large, and mention it in your final answer.
+            After updating, run bun install, bun run check-types and bun run lint, and fix any breakage the updates cause.
+            Create commits with Conventional Commits, one commit per logical change, for example chore(deps): update hono to 4.13.16.
+            Group packages that belong together, such as all oxlint packages, into one commit.
+            Do not push, do not create a branch and do not open a pull request, because the workflow does that.
+            Do not edit workflow files, secrets or unrelated code.
+            If nothing is outdated, make no commits and say so.
+            Finish with a short summary of what changed and what was skipped.
+          initial-context-file: ${{ runner.temp }}/initial-context.md
+          api-key: ${{ secrets.OPENCODE_API_KEY }}
+
+      - name: Open pull request
+        run: |
+          if [ "$(git rev-list --count "origin/${BASE_BRANCH}..HEAD")" -eq 0 ]; then
+            echo "No dependency updates to propose."
+            exit 0
+          fi
+
+          git push -u origin "${BRANCH}"
+          gh pr create \
+            --base "${BASE_BRANCH}" \
+            --head "${BRANCH}" \
+            --title "chore(deps): update dependencies" \
+            --body-file "${RUNNER_TEMP}/answer.md"

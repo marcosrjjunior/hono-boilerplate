@@ -1,0 +1,41 @@
+name: Run agent
+description: Run opencode with a message and an initial context file. Bun must already be set up. The answer is written to $RUNNER_TEMP/answer.md.
+
+inputs:
+  message:
+    description: Instruction passed to opencode before the initial context file contents.
+    required: true
+  initial-context-file:
+    description: Path to the initial context file that opencode receives as context.
+    required: true
+  api-key:
+    description: OpenCode API key.
+    required: true
+  agent:
+    description: Optional opencode agent to run, for example plan. Leave empty for the default build agent.
+    required: false
+    default: ''
+  model:
+    description: Model to run.
+    required: false
+    default: opencode-go/claude-haiku-5-5
+
+runs:
+  using: composite
+  steps:
+    - name: Run OpenCode
+      shell: bash
+      env:
+        AGENT: ${{ inputs.agent }}
+        MODEL: ${{ inputs.model }}
+        INITIAL_CONTEXT_FILE: ${{ inputs.initial-context-file }}
+        MESSAGE: ${{ inputs.message }}
+        OPENCODE_API_KEY: ${{ inputs.api-key }}
+      run: |
+        set -o pipefail
+        AGENT_ARGS=()
+        if [ -n "${AGENT}" ]; then
+          AGENT_ARGS=(--agent "${AGENT}")
+        fi
+
+        bunx opencode-ai run --model "${MODEL}" "${AGENT_ARGS[@]}" "$(cat "${INITIAL_CONTEXT_FILE}")" "${MESSAGE}" | tee "${RUNNER_TEMP}/answer.md"
