@@ -3,10 +3,10 @@ import { describe, expect, it } from 'bun:test'
 import { app } from '../../../app'
 import { Role } from '../users.types'
 
-describe('Count user [POST:/users/count]', () => {
+describe('Count user [QUERY:/users/count]', () => {
   it('should fail with invalid params', async () => {
     const res = await app.request('/users/count', {
-      method: 'POST',
+      method: 'QUERY',
       headers: {
         'Content-Type': 'application/json',
       },
@@ -23,7 +23,7 @@ describe('Count user [POST:/users/count]', () => {
 
   it('should return 2 members', async () => {
     const res = await app.request('/users/count', {
-      method: 'POST',
+      method: 'QUERY',
       headers: {
         'Content-Type': 'application/json',
       },
@@ -42,7 +42,7 @@ describe('Count user [POST:/users/count]', () => {
 
   it('should not return 3 admins', async () => {
     const res = await app.request('/users/count', {
-      method: 'POST',
+      method: 'QUERY',
       headers: {
         'Content-Type': 'application/json',
       },
