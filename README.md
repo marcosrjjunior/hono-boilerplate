@@ -172,11 +172,6 @@ bun run db:generate:types
 
 You can find the openapi generated on endpoint "/doc" or access the scalar generated on "/reference".
 
-There is also the "/endpoints" directory that contains endpoints generated to use with bruno. You can use the client or the extension to read them.
-
-- [Bruno API Client](https://www.usebruno.com).
-- [VSCode Extension](https://marketplace.visualstudio.com/items?itemName=bruno-api-client.bruno)
-
 ## Run test
 
 Tests are implemented using bun which follows a jest-compatible structure.
