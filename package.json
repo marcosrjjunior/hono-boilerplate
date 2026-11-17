@@ -5,10 +5,10 @@
   "author": "Marcos <hello@marcosrjjunior.com>",
   "scripts": {
     "bun:build": "bun build src/bun.ts --compile --minify --target bun --outfile api",
-    "bun:dev": "bun run --hot src/bun.ts",
+    "bun:dev": "bun run src/bun.ts",
     "bun:start": "./api",
-    "dev": "bun run bun:dev",
-    "node:dev": "bun run watch src/node.ts",
+    "dev": "bun run src/bun.ts",
+    "node:dev": "bunx tsx --env-file=.env src/node.ts",
     "node:build": "tsc -p .",
     "node:start": "node ./dist/src/node.js",
     "test": "bun test .spec.ts",
@@ -21,12 +21,11 @@
     "db:reset": "bun run db:migrate:redo && bun run db:seed",
     "db:generate:types": "kysely-codegen --runtime-enums --out-file=./src/platform/persistence/schema.d.ts && bun run db:types:format",
     "db:types:format": "bun fmt ./src/platform/persistence/schema.d.ts",
-    "check-types": "tsc --noemit --skipLibCheck",
-    "lint": "oxlint ./src --type-aware --deny-warnings && bun run check-types",
+    "typecheck": "bun check",
+    "lint": "oxlint ./src --type-aware --deny-warnings && bun run typecheck",
     "lint:fix": "oxlint ./src --type-aware --fix",
     "format": "bun fmt .",
-    "format:check": "bun fmt --check .",
-    "init": "kysely init"
+    "format:check": "bun fmt --check ."
   },
   "dependencies": {
     "@hono/node-server": "^2.1.1",
