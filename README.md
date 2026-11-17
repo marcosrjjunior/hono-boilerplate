@@ -37,7 +37,7 @@ bun.ts:  # Initial file to run the project using Bun
 
 ## Requirements
 
-[node.js v20+](https://nodejs.org/en) or [bun](https://bun.sh)  
+[node.js v24+](https://nodejs.org/en) or [bun](https://bun.sh)  
 [nvm](https://github.com/nvm-sh/nvm#install--update-script) installed to manage node versions
 
 ## Run Locally
