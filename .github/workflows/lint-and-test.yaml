@@ -31,13 +31,13 @@ jobs:
 
     steps:
       - name: Checkout repo
-        uses: actions/checkout@v7
+        uses: actions/checkout@v7.0.1
 
       - name: Setup Bun
-        uses: ./.github/actions/setup-bun
+        uses: $/.github/actions/setup-bun
 
       - name: Install dependencies 📦
-        uses: ./.github/actions/bun-install
+        uses: $/.github/actions/bun-install
 
       - name: Run lint ✅
         run: bun run lint
